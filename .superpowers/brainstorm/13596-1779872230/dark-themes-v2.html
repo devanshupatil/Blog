@@ -1,0 +1,218 @@
+<h2>Dark mode themes — full look</h2>
+<p class="subtitle">Light mode stays warm amber. Pick a complete dark theme.</p>
+
+<style>
+.theme-scene {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(55px);
+  animation: blobDrift ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes blobDrift {
+  0%   { transform: translate(0,0) scale(1); }
+  33%  { transform: translate(14px,-10px) scale(1.07); }
+  66%  { transform: translate(-10px,12px) scale(0.94); }
+  100% { transform: translate(8px,-5px) scale(1.04); }
+}
+.fake-nav {
+  position: absolute; top:0; left:0; right:0;
+  height: 32px;
+  display: flex; align-items: center; padding: 0 14px;
+  justify-content: space-between;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+.fake-nav-logo { font-size:12px; font-weight:700; }
+.fake-nav-links { display:flex; gap:10px; font-size:10px; opacity:0.6; }
+.fake-card {
+  position: absolute;
+  border-radius: 8px;
+  padding: 9px 11px;
+  z-index: 2;
+}
+.fake-card-title { font-size:11px; font-weight:700; margin-bottom:3px; }
+.fake-card-meta  { font-size:9px; opacity:0.5; margin-bottom:5px; }
+.fake-bar { height:5px; border-radius:3px; margin-bottom:3px; opacity:0.25; }
+.fake-tag {
+  display:inline-block; font-size:8px; font-weight:600;
+  padding: 2px 6px; border-radius:999px; margin-top:3px;
+}
+</style>
+
+<div class="cards">
+
+  <!-- Theme 1: Deep Space (dark navy + indigo) -->
+  <div class="card" data-choice="deep-space" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#0d0d1f;color:#e2e8f0;">
+        <div class="blob" style="width:250px;height:250px;top:-80px;left:-50px;background:rgba(99,76,220,0.30);animation-duration:7s;"></div>
+        <div class="blob" style="width:200px;height:200px;top:60px;right:-40px;background:rgba(67,56,202,0.22);animation-duration:9s;animation-delay:-3s;"></div>
+        <div class="blob" style="width:160px;height:160px;bottom:-40px;left:38%;background:rgba(139,92,246,0.18);animation-duration:8s;animation-delay:-1.5s;"></div>
+        <div class="fake-nav" style="background:rgba(13,13,31,0.6);border-bottom:1px solid rgba(139,92,246,0.15);">
+          <span class="fake-nav-logo" style="color:#c4b5fd;">DevBlog</span>
+          <span class="fake-nav-links" style="color:#e2e8f0;">Home Blog About</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.06);border:1px solid rgba(139,92,246,0.2);bottom:14px;left:12px;width:44%;">
+          <div class="fake-card-title" style="color:#e2e8f0;">Building an MCP Server</div>
+          <div class="fake-card-meta" style="color:#94a3b8;">May 2025 · 6 min</div>
+          <div class="fake-bar" style="width:90%;background:#a78bfa;"></div>
+          <div class="fake-bar" style="width:65%;background:#a78bfa;"></div>
+          <span class="fake-tag" style="background:rgba(139,92,246,0.2);color:#c4b5fd;">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.06);border:1px solid rgba(139,92,246,0.2);bottom:14px;right:12px;width:44%;">
+          <div class="fake-card-title" style="color:#e2e8f0;">Git Bisect Deep Dive</div>
+          <div class="fake-card-meta" style="color:#94a3b8;">Apr 2025 · 4 min</div>
+          <div class="fake-bar" style="width:80%;background:#a78bfa;"></div>
+          <div class="fake-bar" style="width:55%;background:#a78bfa;"></div>
+          <span class="fake-tag" style="background:rgba(139,92,246,0.2);color:#c4b5fd;">Git</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Deep Space</h3>
+      <p>Dark navy + indigo/violet blobs. Moody, immersive, premium feel.</p>
+    </div>
+  </div>
+
+  <!-- Theme 2: Forest Night -->
+  <div class="card" data-choice="forest" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#0a1510;color:#d1fae5;">
+        <div class="blob" style="width:250px;height:250px;top:-80px;left:-50px;background:rgba(16,185,129,0.22);animation-duration:7s;"></div>
+        <div class="blob" style="width:200px;height:200px;top:60px;right:-40px;background:rgba(5,150,105,0.18);animation-duration:9s;animation-delay:-3s;"></div>
+        <div class="blob" style="width:160px;height:160px;bottom:-40px;left:38%;background:rgba(52,211,153,0.14);animation-duration:8s;animation-delay:-1.5s;"></div>
+        <div class="fake-nav" style="background:rgba(10,21,16,0.65);border-bottom:1px solid rgba(16,185,129,0.15);">
+          <span class="fake-nav-logo" style="color:#6ee7b7;">DevBlog</span>
+          <span class="fake-nav-links" style="color:#d1fae5;">Home Blog About</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(16,185,129,0.2);bottom:14px;left:12px;width:44%;">
+          <div class="fake-card-title" style="color:#d1fae5;">Building an MCP Server</div>
+          <div class="fake-card-meta" style="color:#6ee7b7;">May 2025 · 6 min</div>
+          <div class="fake-bar" style="width:90%;background:#34d399;"></div>
+          <div class="fake-bar" style="width:65%;background:#34d399;"></div>
+          <span class="fake-tag" style="background:rgba(16,185,129,0.2);color:#6ee7b7;">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(16,185,129,0.2);bottom:14px;right:12px;width:44%;">
+          <div class="fake-card-title" style="color:#d1fae5;">Git Bisect Deep Dive</div>
+          <div class="fake-card-meta" style="color:#6ee7b7;">Apr 2025 · 4 min</div>
+          <div class="fake-bar" style="width:80%;background:#34d399;"></div>
+          <div class="fake-bar" style="width:55%;background:#34d399;"></div>
+          <span class="fake-tag" style="background:rgba(16,185,129,0.2);color:#6ee7b7;">Git</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Forest Night</h3>
+      <p>Deep forest green + emerald blobs. Earthy, calm, stands out.</p>
+    </div>
+  </div>
+
+  <!-- Theme 3: Charcoal Rose -->
+  <div class="card" data-choice="rose" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#161011;color:#fce7f3;">
+        <div class="blob" style="width:250px;height:250px;top:-80px;left:-50px;background:rgba(236,72,153,0.22);animation-duration:7s;"></div>
+        <div class="blob" style="width:200px;height:200px;top:60px;right:-40px;background:rgba(190,24,93,0.18);animation-duration:9s;animation-delay:-3s;"></div>
+        <div class="blob" style="width:160px;height:160px;bottom:-40px;left:38%;background:rgba(244,114,182,0.15);animation-duration:8s;animation-delay:-1.5s;"></div>
+        <div class="fake-nav" style="background:rgba(22,16,17,0.65);border-bottom:1px solid rgba(236,72,153,0.15);">
+          <span class="fake-nav-logo" style="color:#f9a8d4;">DevBlog</span>
+          <span class="fake-nav-links" style="color:#fce7f3;">Home Blog About</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(236,72,153,0.2);bottom:14px;left:12px;width:44%;">
+          <div class="fake-card-title" style="color:#fce7f3;">Building an MCP Server</div>
+          <div class="fake-card-meta" style="color:#f9a8d4;">May 2025 · 6 min</div>
+          <div class="fake-bar" style="width:90%;background:#f472b6;"></div>
+          <div class="fake-bar" style="width:65%;background:#f472b6;"></div>
+          <span class="fake-tag" style="background:rgba(236,72,153,0.2);color:#f9a8d4;">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(236,72,153,0.2);bottom:14px;right:12px;width:44%;">
+          <div class="fake-card-title" style="color:#fce7f3;">Git Bisect Deep Dive</div>
+          <div class="fake-card-meta" style="color:#f9a8d4;">Apr 2025 · 4 min</div>
+          <div class="fake-bar" style="width:80%;background:#f472b6;"></div>
+          <div class="fake-bar" style="width:55%;background:#f472b6;"></div>
+          <span class="fake-tag" style="background:rgba(236,72,153,0.2);color:#f9a8d4;">Git</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Charcoal Rose</h3>
+      <p>Dark charcoal + rose/pink blobs. Warm-dark, bold, editorial.</p>
+    </div>
+  </div>
+
+  <!-- Theme 4: Midnight Slate -->
+  <div class="card" data-choice="slate" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#0f172a;color:#e2e8f0;">
+        <div class="blob" style="width:250px;height:250px;top:-80px;left:-50px;background:rgba(56,189,248,0.18);animation-duration:7s;"></div>
+        <div class="blob" style="width:200px;height:200px;top:60px;right:-40px;background:rgba(14,165,233,0.14);animation-duration:9s;animation-delay:-3s;"></div>
+        <div class="blob" style="width:160px;height:160px;bottom:-40px;left:38%;background:rgba(99,179,237,0.12);animation-duration:8s;animation-delay:-1.5s;"></div>
+        <div class="fake-nav" style="background:rgba(15,23,42,0.65);border-bottom:1px solid rgba(56,189,248,0.12);">
+          <span class="fake-nav-logo" style="color:#7dd3fc;">DevBlog</span>
+          <span class="fake-nav-links" style="color:#e2e8f0;">Home Blog About</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(56,189,248,0.15);bottom:14px;left:12px;width:44%;">
+          <div class="fake-card-title" style="color:#e2e8f0;">Building an MCP Server</div>
+          <div class="fake-card-meta" style="color:#94a3b8;">May 2025 · 6 min</div>
+          <div class="fake-bar" style="width:90%;background:#38bdf8;"></div>
+          <div class="fake-bar" style="width:65%;background:#38bdf8;"></div>
+          <span class="fake-tag" style="background:rgba(56,189,248,0.15);color:#7dd3fc;">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(56,189,248,0.15);bottom:14px;right:12px;width:44%;">
+          <div class="fake-card-title" style="color:#e2e8f0;">Git Bisect Deep Dive</div>
+          <div class="fake-card-meta" style="color:#94a3b8;">Apr 2025 · 4 min</div>
+          <div class="fake-bar" style="width:80%;background:#38bdf8;"></div>
+          <div class="fake-bar" style="width:55%;background:#38bdf8;"></div>
+          <span class="fake-tag" style="background:rgba(56,189,248,0.15);color:#7dd3fc;">Git</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Midnight Slate</h3>
+      <p>Classic dark slate + sky blue blobs. Clean, professional, popular dev aesthetic.</p>
+    </div>
+  </div>
+
+  <!-- Theme 5: Pure Black (AMOLED) -->
+  <div class="card" data-choice="black" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#000000;color:#f1f5f9;">
+        <div class="blob" style="width:250px;height:250px;top:-80px;left:-50px;background:rgba(224,123,57,0.20);animation-duration:7s;"></div>
+        <div class="blob" style="width:200px;height:200px;top:60px;right:-40px;background:rgba(196,168,130,0.14);animation-duration:9s;animation-delay:-3s;"></div>
+        <div class="blob" style="width:160px;height:160px;bottom:-40px;left:38%;background:rgba(212,135,90,0.12);animation-duration:8s;animation-delay:-1.5s;"></div>
+        <div class="fake-nav" style="background:rgba(0,0,0,0.7);border-bottom:1px solid rgba(224,123,57,0.18);">
+          <span class="fake-nav-logo" style="color:#e8a96b;">DevBlog</span>
+          <span class="fake-nav-links" style="color:#f1f5f9;">Home Blog About</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.04);border:1px solid rgba(224,123,57,0.2);bottom:14px;left:12px;width:44%;">
+          <div class="fake-card-title" style="color:#f1f5f9;">Building an MCP Server</div>
+          <div class="fake-card-meta" style="color:#e8a96b;">May 2025 · 6 min</div>
+          <div class="fake-bar" style="width:90%;background:#e07b39;"></div>
+          <div class="fake-bar" style="width:65%;background:#e07b39;"></div>
+          <span class="fake-tag" style="background:rgba(224,123,57,0.2);color:#e8a96b;">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.04);border:1px solid rgba(224,123,57,0.2);bottom:14px;right:12px;width:44%;">
+          <div class="fake-card-title" style="color:#f1f5f9;">Git Bisect Deep Dive</div>
+          <div class="fake-card-meta" style="color:#e8a96b;">Apr 2025 · 4 min</div>
+          <div class="fake-bar" style="width:80%;background:#e07b39;"></div>
+          <div class="fake-bar" style="width:55%;background:#e07b39;"></div>
+          <span class="fake-tag" style="background:rgba(224,123,57,0.2);color:#e8a96b;">Git</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Pure Black (AMOLED)</h3>
+      <p>True black (#000000) + warm amber blobs. Maximum contrast, OLED-friendly, keeps brand consistency across modes.</p>
+    </div>
+  </div>
+
+</div>

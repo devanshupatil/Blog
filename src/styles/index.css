@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: #fdf6ee;
+  }
+  html.dark {
+    background-color: #0d0d0d;
+  }
+
+  /* ── Syntax highlighting: swap hljs theme for dark mode ── */
+  /* Light: github theme is already imported via main.tsx */
+  /* Dark: override with github-dark palette tokens */
+  html.dark .hljs {
+    background: #161b22;
+    color: #c9d1d9;
+  }
+  html.dark .hljs-comment,
+  html.dark .hljs-meta { color: #8b949e; }
+  html.dark .hljs-keyword,
+  html.dark .hljs-selector-tag,
+  html.dark .hljs-literal,
+  html.dark .hljs-type { color: #ff7b72; }
+  html.dark .hljs-string,
+  html.dark .hljs-attr,
+  html.dark .hljs-regexp { color: #a5d6ff; }
+  html.dark .hljs-number,
+  html.dark .hljs-built_in,
+  html.dark .hljs-builtin-name { color: #79c0ff; }
+  html.dark .hljs-title,
+  html.dark .hljs-section,
+  html.dark .hljs-name { color: #d2a8ff; }
+  html.dark .hljs-variable,
+  html.dark .hljs-template-variable { color: #ffa657; }
+  html.dark .hljs-tag { color: #7ee787; }
+  html.dark .hljs-addition { color: #aff5b4; background: #033a16; }
+  html.dark .hljs-deletion { color: #ffdcd7; background: #67060c; }
+
+  /* Dark mode prose code blocks */
+  html.dark .prose pre {
+    background-color: #161b22 !important;
+    border: 1px solid #30363d;
+  }
+  html.dark .prose code {
+    background-color: #1f2428;
+    color: #e6edf3;
+    border-radius: 3px;
+    padding: 0.1em 0.3em;
+  }
+}

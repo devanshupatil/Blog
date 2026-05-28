@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Background Animation Style</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, sans-serif; background: #1a1a2e; color: #eee; padding: 24px; }
+  h2 { font-size: 1.4rem; margin-bottom: 6px; color: #fff; }
+  .subtitle { color: #aaa; margin-bottom: 24px; font-size: 0.95rem; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .card {
+    border: 2px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+    background: #111;
+  }
+  .card:hover { border-color: #e07b39; transform: translateY(-2px); }
+  .card.selected { border-color: #e07b39; box-shadow: 0 0 0 3px rgba(224,123,57,0.3); }
+
+  .preview {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-body {
+    padding: 14px 16px;
+    border-top: 1px solid #222;
+  }
+  .card-body h3 { font-size: 1rem; color: #fff; margin-bottom: 4px; }
+  .card-body p { font-size: 0.82rem; color: #999; }
+
+  /* ---- Option A: Floating Particles ---- */
+  .preview-a {
+    background: #fdf6ee;
+  }
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: #e07b39;
+    opacity: 0.18;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(200px) scale(1); opacity: 0; }
+    10% { opacity: 0.18; }
+    90% { opacity: 0.18; }
+    100% { transform: translateY(-40px) scale(1.1); opacity: 0; }
+  }
+
+  /* ---- Option B: Gradient Aurora ---- */
+  .preview-b {
+    background: #fdf6ee;
+  }
+  .aurora-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: blobDrift ease-in-out infinite alternate;
+  }
+  @keyframes blobDrift {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 20px) scale(1.15); }
+  }
+
+  /* ---- Option C: Wave Lines ---- */
+  .preview-c {
+    background: #fdf6ee;
+    overflow: hidden;
+  }
+  .wave-svg { position: absolute; width: 200%; left: -50%; top: 0; height: 100%; }
+
+  /* ---- Option D: Ink Blobs ---- */
+  .preview-d {
+    background: #fdf6ee;
+  }
+  .ink-blob {
+    position: absolute;
+    border-radius: 50%;
+    animation: inkPulse ease-in-out infinite alternate;
+    filter: blur(20px);
+  }
+  @keyframes inkPulse {
+    0% { transform: scale(1) rotate(0deg); border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; }
+    100% { transform: scale(1.1) rotate(15deg); border-radius: 40% 60% 45% 55% / 60% 40% 60% 40%; }
+  }
+
+  /* selected indicator */
+  .selected-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #e07b39; color: #fff;
+    text-align: center; padding: 12px;
+    font-size: 0.9rem; font-weight: 600;
+    display: none;
+  }
+  .selected-bar.visible { display: block; }
+</style>
+</head>
+<body>
+
+<h2>Which background animation style fits your blog?</h2>
+<p class="subtitle">Your blog has a warm cream editorial palette (#fdf6ee base, #e07b39 accent). Click a card to select.</p>
+
+<div class="cards">
+
+  <!-- A: Floating Particles -->
+  <div class="card" id="card-a" onclick="select('a', 'Floating Particles')">
+    <div class="preview preview-a" id="prev-a">
+      <!-- particles injected by script -->
+    </div>
+    <div class="card-body">
+      <h3>A — Floating Particles</h3>
+      <p>Tiny dots rising slowly. Minimal, elegant, zero distraction from content.</p>
+    </div>
+  </div>
+
+  <!-- B: Aurora Blobs -->
+  <div class="card" id="card-b" onclick="select('b', 'Soft Aurora Blobs')">
+    <div class="preview preview-b" id="prev-b">
+      <div class="aurora-blob" style="width:160px;height:160px;background:rgba(224,123,57,0.25);top:-40px;left:-20px;animation-duration:6s;"></div>
+      <div class="aurora-blob" style="width:120px;height:120px;background:rgba(196,168,130,0.3);top:60px;right:-10px;animation-duration:8s;animation-delay:-3s;"></div>
+      <div class="aurora-blob" style="width:100px;height:100px;background:rgba(240,221,200,0.4);bottom:-20px;left:60px;animation-duration:7s;animation-delay:-1s;"></div>
+      <!-- Blog content overlay -->
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:16px;">
+        <div style="width:70%;height:14px;background:rgba(45,31,15,0.12);border-radius:4px;"></div>
+        <div style="width:50%;height:10px;background:rgba(45,31,15,0.08);border-radius:4px;"></div>
+        <div style="width:40%;height:10px;background:rgba(45,31,15,0.08);border-radius:4px;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Soft Aurora Blobs</h3>
+      <p>Blurred color blobs slowly drift. Warm, dreamy, modern editorial feel.</p>
+    </div>
+  </div>
+
+  <!-- C: Animated Waves -->
+  <div class="card" id="card-c" onclick="select('c', 'Flowing Wave Lines')">
+    <div class="preview preview-c" id="prev-c">
+      <svg class="wave-svg" viewBox="0 0 800 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,90 C100,60 200,120 300,90 C400,60 500,120 600,90 C700,60 800,120 900,90 L900,180 L0,180 Z" fill="rgba(224,123,57,0.06)">
+          <animateTransform attributeName="transform" type="translate" from="-200,0" to="0,0" dur="4s" repeatCount="indefinite"/>
+        </path>
+        <path d="M0,110 C150,80 250,140 400,110 C550,80 650,140 800,110 L800,180 L0,180 Z" fill="rgba(196,168,130,0.08)">
+          <animateTransform attributeName="transform" type="translate" from="0,0" to="-200,0" dur="6s" repeatCount="indefinite"/>
+        </path>
+        <path d="M0,130 C120,100 240,160 360,130 C480,100 600,160 720,130 L720,180 L0,180 Z" fill="rgba(240,221,200,0.10)">
+          <animateTransform attributeName="transform" type="translate" from="-100,0" to="100,0" dur="5s" repeatCount="indefinite"/>
+        </path>
+      </svg>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:16px;">
+        <div style="width:70%;height:14px;background:rgba(45,31,15,0.12);border-radius:4px;"></div>
+        <div style="width:50%;height:10px;background:rgba(45,31,15,0.08);border-radius:4px;"></div>
+        <div style="width:40%;height:10px;background:rgba(45,31,15,0.08);border-radius:4px;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Flowing Waves</h3>
+      <p>Layered SVG waves drift across the bottom. Calm, organic, editorial newspaper feel.</p>
+    </div>
+  </div>
+
+  <!-- D: Ink Blobs (morphing shapes) -->
+  <div class="card" id="card-d" onclick="select('d', 'Morphing Ink Blobs')">
+    <div class="preview preview-d" id="prev-d">
+      <div class="ink-blob" style="width:140px;height:140px;background:rgba(224,123,57,0.12);top:-20px;left:-20px;animation-duration:5s;"></div>
+      <div class="ink-blob" style="width:100px;height:100px;background:rgba(196,168,130,0.15);bottom:-10px;right:-10px;animation-duration:7s;animation-delay:-2s;"></div>
+      <div class="ink-blob" style="width:80px;height:80px;background:rgba(240,221,200,0.20);top:40px;right:40px;animation-duration:6s;animation-delay:-1s;"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:16px;">
+        <div style="width:70%;height:14px;background:rgba(45,31,15,0.12);border-radius:4px;"></div>
+        <div style="width:50%;height:10px;background:rgba(45,31,15,0.08);border-radius:4px;"></div>
+        <div style="width:40%;height:10px;background:rgba(45,31,15,0.08);border-radius:4px;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>D — Morphing Ink Blobs</h3>
+      <p>Organic shapes that slowly morph. Artistic, handcrafted feel — great for a personal blog.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="selected-bar" id="selected-bar">✓ Selected: <span id="selected-label"></span> — type your response in the terminal</div>
+
+<script>
+  // Spawn floating particles for option A
+  const prevA = document.getElementById('prev-a');
+  for (let i = 0; i < 12; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = 4 + Math.random() * 10;
+    p.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      left: ${Math.random() * 100}%;
+      animation-duration: ${4 + Math.random() * 6}s;
+      animation-delay: ${-Math.random() * 8}s;
+    `;
+    prevA.appendChild(p);
+  }
+
+  let chosen = null;
+  function select(id, label) {
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('card-' + id).classList.add('selected');
+    chosen = id;
+    document.getElementById('selected-label').textContent = label;
+    document.getElementById('selected-bar').classList.add('visible');
+
+    // record to events file via fetch if available
+    try {
+      fetch('/__select', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({type:'click', choice: id, text: label, timestamp: Date.now()})
+      }).catch(() => {});
+    } catch(e) {}
+  }
+</script>
+</body>
+</html>

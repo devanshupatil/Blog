@@ -1,0 +1,70 @@
+<h2>Which design direction feels right for your blog?</h2>
+<p class="subtitle">This sets the overall mood — typography, spacing, and color follow from this choice.</p>
+
+<div class="cards">
+
+  <!-- Option A: Clean Minimal -->
+  <div class="card" data-choice="minimal" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f8f9fa; padding:16px; font-family:'Inter',sans-serif;">
+      <div style="background:#fff; border-radius:10px; padding:14px; box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; border-bottom:1px solid #f0f0f0; padding-bottom:10px;">
+          <span style="font-weight:700; font-size:14px; color:#111;">Devanshu Patil</span>
+          <div style="display:flex; gap:14px; font-size:11px; color:#555; font-weight:500;">
+            <span>Frontend</span><span>Backend</span><span>Cloud</span><span style="color:#6366f1;">AI</span>
+          </div>
+        </div>
+        <div style="font-size:13px; font-weight:700; color:#111; margin-bottom:4px;">Building a real-time AI pipeline with Go</div>
+        <div style="font-size:11px; color:#888; line-height:1.5;">A deep dive into streaming LLM responses through a Go backend...</div>
+        <div style="margin-top:8px; font-size:10px; color:#aaa;">May 2025 · 8 min read</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Clean & Minimal</h3>
+      <p>Crisp white space, sharp type, no distractions. Content-first. Think Linear, Stripe Docs.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Dark Glass -->
+  <div class="card" data-choice="dark-glass" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:linear-gradient(135deg,#0f0f1a 0%,#1a1030 100%); padding:16px; font-family:'Inter',sans-serif;">
+      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:14px; backdrop-filter:blur(10px);">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:10px;">
+          <span style="font-weight:700; font-size:14px; color:#fff;">Devanshu Patil</span>
+          <div style="display:flex; gap:14px; font-size:11px; color:rgba(255,255,255,0.6); font-weight:500;">
+            <span>Frontend</span><span>Backend</span><span>Cloud</span>
+            <span style="color:#a78bfa; font-weight:600;">AI</span>
+          </div>
+        </div>
+        <div style="font-size:13px; font-weight:700; color:#fff; margin-bottom:4px;">Building a real-time AI pipeline with Go</div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.5); line-height:1.5;">A deep dive into streaming LLM responses through a Go backend...</div>
+        <div style="margin-top:8px; font-size:10px; color:rgba(255,255,255,0.3);">May 2025 · 8 min read</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Dark Glass</h3>
+      <p>Deep dark background, frosted glass cards, purple/violet accents. Feels premium and modern.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Warm Editorial -->
+  <div class="card" data-choice="editorial" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fdf6ee; padding:16px; font-family:'Georgia',serif;">
+      <div style="background:#fff; border-radius:10px; padding:14px; border-left:3px solid #e07b39;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; border-bottom:1px solid #f5ebe0; padding-bottom:10px;">
+          <span style="font-weight:700; font-size:14px; color:#2d1f0f; font-family:'Georgia',serif;">Devanshu Patil</span>
+          <div style="display:flex; gap:14px; font-size:11px; color:#7c5c3e; font-weight:500; font-family:'Inter',sans-serif;">
+            <span>Frontend</span><span>Backend</span><span>Cloud</span><span style="color:#e07b39;">AI</span>
+          </div>
+        </div>
+        <div style="font-size:13px; font-weight:700; color:#2d1f0f; margin-bottom:4px; font-family:'Georgia',serif;">Building a real-time AI pipeline with Go</div>
+        <div style="font-size:11px; color:#7c5c3e; line-height:1.5; font-family:'Inter',sans-serif;">A deep dive into streaming LLM responses through a Go backend...</div>
+        <div style="margin-top:8px; font-size:10px; color:#c4a882; font-family:'Inter',sans-serif;">May 2025 · 8 min read</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Warm Editorial</h3>
+      <p>Cream tones, serif headings, orange accents. Feels personal, readable, like a great magazine.</p>
+    </div>
+  </div>
+
+</div>

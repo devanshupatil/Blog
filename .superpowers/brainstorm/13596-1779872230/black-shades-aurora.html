@@ -1,0 +1,188 @@
+<h2>4 black shades + warm amber aurora</h2>
+<p class="subtitle">Same animation on all four — pick which background shade feels best with it.</p>
+
+<style>
+.shade-scene {
+  width: 100%;
+  height: 190px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: blobDrift ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes blobDrift {
+  0%   { transform: translate(0,0) scale(1); }
+  33%  { transform: translate(16px,-12px) scale(1.09); }
+  66%  { transform: translate(-12px,14px) scale(0.93); }
+  100% { transform: translate(10px,-6px) scale(1.06); }
+}
+.fake-nav {
+  position: absolute; top:0; left:0; right:0;
+  height: 32px;
+  display: flex; align-items: center; padding: 0 14px;
+  justify-content: space-between;
+  z-index: 2;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+}
+.fake-card {
+  position: absolute;
+  border-radius: 8px;
+  padding: 9px 11px;
+  z-index: 2;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.04);
+}
+.fc-title { font-size:11px; font-weight:700; color:#f1f5f9; margin-bottom:3px; }
+.fc-meta  { font-size:9px; color:#e8a96b; margin-bottom:5px; }
+.fc-bar   { height:5px; border-radius:3px; margin-bottom:3px; }
+.fc-tag   { display:inline-block; font-size:8px; font-weight:600; padding:2px 6px; border-radius:999px; margin-top:3px; background:rgba(224,123,57,0.18); color:#e8a96b; }
+.hex-badge { position:absolute; bottom:6px; right:10px; font-size:10px; font-family:monospace; color:rgba(255,255,255,0.25); z-index:3; }
+</style>
+
+<div class="cards">
+
+  <!-- Shade 1: Pure Black #000000 -->
+  <div class="card" data-choice="pure-black" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="shade-scene" style="background:#000000;">
+        <div class="blob" style="width:290px;height:290px;top:-90px;left:-60px;background:rgba(224,123,57,0.22);animation-duration:7s;"></div>
+        <div class="blob" style="width:230px;height:230px;top:60px;right:-50px;background:rgba(196,168,130,0.16);animation-duration:10s;animation-delay:-4s;"></div>
+        <div class="blob" style="width:190px;height:190px;bottom:-55px;left:32%;background:rgba(212,135,90,0.14);animation-duration:8s;animation-delay:-2s;"></div>
+        <div class="fake-nav" style="background:rgba(0,0,0,0.55);">
+          <span style="font-size:12px;font-weight:700;color:#e8a96b;">DevBlog</span>
+          <span style="font-size:10px;color:rgba(255,255,255,0.35);">Home · Blog · About</span>
+        </div>
+        <div class="fake-card" style="bottom:14px;left:12px;width:44%;">
+          <div class="fc-title">Building an MCP Server</div>
+          <div class="fc-meta">May 2025 · 6 min</div>
+          <div class="fc-bar" style="width:88%;background:rgba(224,123,57,0.30);"></div>
+          <div class="fc-bar" style="width:60%;background:rgba(255,255,255,0.12);"></div>
+          <span class="fc-tag">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="bottom:14px;right:12px;width:44%;">
+          <div class="fc-title">Git Bisect Deep Dive</div>
+          <div class="fc-meta">Apr 2025 · 4 min</div>
+          <div class="fc-bar" style="width:75%;background:rgba(224,123,57,0.30);"></div>
+          <div class="fc-bar" style="width:50%;background:rgba(255,255,255,0.12);"></div>
+          <span class="fc-tag">Git</span>
+        </div>
+        <span class="hex-badge">#000000</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Pure Black — #000000</h3>
+      <p>True AMOLED black. Aurora pops the most — sharpest glow contrast.</p>
+    </div>
+  </div>
+
+  <!-- Shade 2: Off Black #0a0a0a -->
+  <div class="card" data-choice="off-black" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="shade-scene" style="background:#0a0a0a;">
+        <div class="blob" style="width:290px;height:290px;top:-90px;left:-60px;background:rgba(224,123,57,0.22);animation-duration:7s;animation-delay:-1s;"></div>
+        <div class="blob" style="width:230px;height:230px;top:60px;right:-50px;background:rgba(196,168,130,0.16);animation-duration:10s;animation-delay:-5s;"></div>
+        <div class="blob" style="width:190px;height:190px;bottom:-55px;left:32%;background:rgba(212,135,90,0.14);animation-duration:8s;animation-delay:-3s;"></div>
+        <div class="fake-nav" style="background:rgba(10,10,10,0.55);">
+          <span style="font-size:12px;font-weight:700;color:#e8a96b;">DevBlog</span>
+          <span style="font-size:10px;color:rgba(255,255,255,0.35);">Home · Blog · About</span>
+        </div>
+        <div class="fake-card" style="bottom:14px;left:12px;width:44%;">
+          <div class="fc-title">Building an MCP Server</div>
+          <div class="fc-meta">May 2025 · 6 min</div>
+          <div class="fc-bar" style="width:88%;background:rgba(224,123,57,0.30);"></div>
+          <div class="fc-bar" style="width:60%;background:rgba(255,255,255,0.12);"></div>
+          <span class="fc-tag">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="bottom:14px;right:12px;width:44%;">
+          <div class="fc-title">Git Bisect Deep Dive</div>
+          <div class="fc-meta">Apr 2025 · 4 min</div>
+          <div class="fc-bar" style="width:75%;background:rgba(224,123,57,0.30);"></div>
+          <div class="fc-bar" style="width:50%;background:rgba(255,255,255,0.12);"></div>
+          <span class="fc-tag">Git</span>
+        </div>
+        <span class="hex-badge">#0a0a0a</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Off Black — #0a0a0a</h3>
+      <p>Nearly black. Blobs feel slightly richer — a hair softer on eyes without losing the dark feel.</p>
+    </div>
+  </div>
+
+  <!-- Shade 3: Rich Black #111111 -->
+  <div class="card" data-choice="rich-black" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="shade-scene" style="background:#111111;">
+        <div class="blob" style="width:290px;height:290px;top:-90px;left:-60px;background:rgba(224,123,57,0.22);animation-duration:7s;animation-delay:-2s;"></div>
+        <div class="blob" style="width:230px;height:230px;top:60px;right:-50px;background:rgba(196,168,130,0.16);animation-duration:10s;animation-delay:-6s;"></div>
+        <div class="blob" style="width:190px;height:190px;bottom:-55px;left:32%;background:rgba(212,135,90,0.14);animation-duration:8s;animation-delay:-1s;"></div>
+        <div class="fake-nav" style="background:rgba(17,17,17,0.55);">
+          <span style="font-size:12px;font-weight:700;color:#e8a96b;">DevBlog</span>
+          <span style="font-size:10px;color:rgba(255,255,255,0.35);">Home · Blog · About</span>
+        </div>
+        <div class="fake-card" style="bottom:14px;left:12px;width:44%;border-color:rgba(255,255,255,0.09);background:rgba(255,255,255,0.05);">
+          <div class="fc-title">Building an MCP Server</div>
+          <div class="fc-meta">May 2025 · 6 min</div>
+          <div class="fc-bar" style="width:88%;background:rgba(224,123,57,0.30);"></div>
+          <div class="fc-bar" style="width:60%;background:rgba(255,255,255,0.12);"></div>
+          <span class="fc-tag">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="bottom:14px;right:12px;width:44%;border-color:rgba(255,255,255,0.09);background:rgba(255,255,255,0.05);">
+          <div class="fc-title">Git Bisect Deep Dive</div>
+          <div class="fc-meta">Apr 2025 · 4 min</div>
+          <div class="fc-bar" style="width:75%;background:rgba(224,123,57,0.30);"></div>
+          <div class="fc-bar" style="width:50%;background:rgba(255,255,255,0.12);"></div>
+          <span class="fc-tag">Git</span>
+        </div>
+        <span class="hex-badge">#111111</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Rich Black — #111111</h3>
+      <p>Classic dark theme. Cards have visible depth. Warm blobs blend smoothly — balanced for long reading.</p>
+    </div>
+  </div>
+
+  <!-- Shade 4: Dark Gray #1a1a1a -->
+  <div class="card" data-choice="dark-gray" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="shade-scene" style="background:#1a1a1a;">
+        <div class="blob" style="width:290px;height:290px;top:-90px;left:-60px;background:rgba(224,123,57,0.22);animation-duration:7s;animation-delay:-3s;"></div>
+        <div class="blob" style="width:230px;height:230px;top:60px;right:-50px;background:rgba(196,168,130,0.16);animation-duration:10s;animation-delay:-7s;"></div>
+        <div class="blob" style="width:190px;height:190px;bottom:-55px;left:32%;background:rgba(212,135,90,0.14);animation-duration:8s;animation-delay:-4s;"></div>
+        <div class="fake-nav" style="background:rgba(26,26,26,0.55);">
+          <span style="font-size:12px;font-weight:700;color:#e8a96b;">DevBlog</span>
+          <span style="font-size:10px;color:rgba(255,255,255,0.35);">Home · Blog · About</span>
+        </div>
+        <div class="fake-card" style="bottom:14px;left:12px;width:44%;border-color:rgba(255,255,255,0.10);background:rgba(255,255,255,0.06);">
+          <div class="fc-title">Building an MCP Server</div>
+          <div class="fc-meta">May 2025 · 6 min</div>
+          <div class="fc-bar" style="width:88%;background:rgba(224,123,57,0.30);"></div>
+          <div class="fc-bar" style="width:60%;background:rgba(255,255,255,0.12);"></div>
+          <span class="fc-tag">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="bottom:14px;right:12px;width:44%;border-color:rgba(255,255,255,0.10);background:rgba(255,255,255,0.06);">
+          <div class="fc-title">Git Bisect Deep Dive</div>
+          <div class="fc-meta">Apr 2025 · 4 min</div>
+          <div class="fc-bar" style="width:75%;background:rgba(224,123,57,0.30);"></div>
+          <div class="fc-bar" style="width:50%;background:rgba(255,255,255,0.12);"></div>
+          <span class="fc-tag">Git</span>
+        </div>
+        <span class="hex-badge">#1a1a1a</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Dark Gray — #1a1a1a</h3>
+      <p>Softest shade. Blobs feel most diffused and subtle. Easiest on eyes for long reading sessions.</p>
+    </div>
+  </div>
+
+</div>

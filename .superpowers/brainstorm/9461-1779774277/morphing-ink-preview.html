@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Morphing Ink Blobs — Full Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #fdf6ee;
+    color: #2d1f0f;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Animated blobs ── */
+  .blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: 0;
+    animation: morph ease-in-out infinite alternate;
+  }
+
+  .blob-1 {
+    width: 420px; height: 420px;
+    background: rgba(224, 123, 57, 0.13);
+    top: -80px; left: -80px;
+    animation-duration: 9s;
+    animation-name: morph1;
+  }
+  .blob-2 {
+    width: 340px; height: 340px;
+    background: rgba(196, 168, 130, 0.18);
+    top: 60px; right: -60px;
+    animation-duration: 12s;
+    animation-delay: -4s;
+    animation-name: morph2;
+  }
+  .blob-3 {
+    width: 300px; height: 300px;
+    background: rgba(240, 221, 200, 0.25);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation-duration: 10s;
+    animation-delay: -2s;
+    animation-name: morph3;
+  }
+  .blob-4 {
+    width: 380px; height: 380px;
+    background: rgba(224, 123, 57, 0.09);
+    bottom: -100px; right: -60px;
+    animation-duration: 14s;
+    animation-delay: -6s;
+    animation-name: morph4;
+  }
+  .blob-5 {
+    width: 260px; height: 260px;
+    background: rgba(124, 92, 62, 0.08);
+    bottom: 80px; left: -40px;
+    animation-duration: 11s;
+    animation-delay: -3s;
+    animation-name: morph5;
+  }
+
+  @keyframes morph1 {
+    0%   { border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; transform: scale(1) rotate(0deg); }
+    100% { border-radius: 40% 60% 45% 55% / 60% 40% 60% 40%; transform: scale(1.12) rotate(12deg); }
+  }
+  @keyframes morph2 {
+    0%   { border-radius: 50% 70% 40% 60% / 45% 55% 65% 35%; transform: scale(1) rotate(0deg); }
+    100% { border-radius: 70% 30% 60% 40% / 55% 45% 35% 65%; transform: scale(1.08) rotate(-15deg); }
+  }
+  @keyframes morph3 {
+    0%   { border-radius: 45% 55% 60% 40% / 60% 40% 55% 45%; transform: translate(-50%,-50%) scale(1); }
+    100% { border-radius: 55% 45% 40% 60% / 40% 60% 45% 55%; transform: translate(-50%,-50%) scale(1.15); }
+  }
+  @keyframes morph4 {
+    0%   { border-radius: 65% 35% 50% 50% / 40% 60% 40% 60%; transform: scale(1) rotate(0deg); }
+    100% { border-radius: 35% 65% 50% 50% / 60% 40% 60% 40%; transform: scale(1.1) rotate(20deg); }
+  }
+  @keyframes morph5 {
+    0%   { border-radius: 50% 50% 40% 60% / 55% 45% 60% 40%; transform: scale(1); }
+    100% { border-radius: 60% 40% 55% 45% / 40% 60% 40% 60%; transform: scale(1.1); }
+  }
+
+  /* ── Page layout ── */
+  .page { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 24px 60px; }
+
+  /* navbar */
+  nav {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 24px; border-bottom: 1px solid rgba(224,123,57,0.2);
+    background: rgba(253,246,238,0.6); backdrop-filter: blur(8px);
+  }
+  nav .logo { font-family: Georgia, serif; font-size: 1.1rem; font-weight: bold; color: #2d1f0f; }
+  nav .links { display: flex; gap: 24px; font-family: Inter, sans-serif; font-size: 0.85rem; color: #7c5c3e; }
+  nav .links a { text-decoration: none; color: inherit; }
+  nav .links a:hover { color: #e07b39; }
+
+  /* hero */
+  .hero { text-align: center; padding: 80px 0 60px; }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: bold; line-height: 1.2;
+    color: #2d1f0f; margin-bottom: 16px;
+  }
+  .hero p { font-family: Inter, sans-serif; font-size: 1.05rem; color: #7c5c3e; max-width: 520px; margin: 0 auto 28px; }
+  .hero .cta {
+    display: inline-block; background: #e07b39; color: #fff;
+    font-family: Inter, sans-serif; font-weight: 600; font-size: 0.95rem;
+    padding: 12px 28px; border-radius: 8px; text-decoration: none;
+  }
+
+  /* cards grid */
+  .section-title {
+    font-size: 1.3rem; font-weight: bold; color: #2d1f0f;
+    margin-bottom: 20px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(224,123,57,0.25);
+    font-family: Georgia, serif;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-bottom: 48px; }
+  .card {
+    background: rgba(255,255,255,0.55); backdrop-filter: blur(4px);
+    border: 1px solid rgba(240,221,200,0.8); border-radius: 12px;
+    padding: 20px; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(224,123,57,0.12); }
+  .card .tag {
+    font-family: Inter, sans-serif; font-size: 0.72rem; font-weight: 600;
+    color: #e07b39; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;
+  }
+  .card h3 { font-size: 1.05rem; color: #2d1f0f; margin-bottom: 8px; line-height: 1.4; }
+  .card p { font-family: Inter, sans-serif; font-size: 0.82rem; color: #7c5c3e; line-height: 1.6; }
+  .card .meta { font-family: Inter, sans-serif; font-size: 0.75rem; color: #c4a882; margin-top: 12px; }
+
+  /* label */
+  .label-badge {
+    position: fixed; bottom: 16px; right: 16px; z-index: 999;
+    background: #2d1f0f; color: #fdf6ee;
+    font-family: Inter, sans-serif; font-size: 0.78rem;
+    padding: 8px 14px; border-radius: 20px; opacity: 0.85;
+  }
+</style>
+</head>
+<body>
+
+<!-- Morphing Ink Blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+<div class="blob blob-4"></div>
+<div class="blob blob-5"></div>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">Devanshu Patil</div>
+  <div class="links">
+    <a href="#">Blog</a>
+    <a href="#">Frontend</a>
+    <a href="#">Backend</a>
+    <a href="#">Cloud</a>
+    <a href="#">AI</a>
+  </div>
+</nav>
+
+<!-- Page content -->
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Learning daily,<br>growing endlessly,<br>sharing proudly.</h1>
+    <p>A personal blog on frontend, backend, cloud, and AI — from a developer who builds and experiments daily.</p>
+    <a href="#" class="cta">Explore →</a>
+  </div>
+
+  <!-- Recent posts -->
+  <div class="section-title">Recent Posts</div>
+  <div class="grid">
+    <div class="card">
+      <div class="tag">Frontend</div>
+      <h3>Building a Blog with React + Vite in 2024</h3>
+      <p>A walkthrough of setting up a fast, modern blog with React, Vite, Tailwind, and gray-matter.</p>
+      <div class="meta">May 20, 2025 · 6 min read</div>
+    </div>
+    <div class="card">
+      <div class="tag">Cloud</div>
+      <h3>Lambda in a VPC — When and Why</h3>
+      <p>Connecting AWS Lambda to private RDS and ElastiCache resources without exposing them publicly.</p>
+      <div class="meta">May 14, 2025 · 8 min read</div>
+    </div>
+    <div class="card">
+      <div class="tag">AI</div>
+      <h3>MCP Servers — Building Your First Tool</h3>
+      <p>Model Context Protocol lets you give Claude tools that run on your machine. Here's how it works.</p>
+      <div class="meta">May 8, 2025 · 10 min read</div>
+    </div>
+    <div class="card">
+      <div class="tag">Backend</div>
+      <h3>Git Bisect — Find the Buggy Commit Fast</h3>
+      <p>Binary-search your git history to pinpoint exactly which commit introduced a regression.</p>
+      <div class="meta">Apr 30, 2025 · 5 min read</div>
+    </div>
+    <div class="card">
+      <div class="tag">Frontend</div>
+      <h3>Blocking Crawlers with Nginx</h3>
+      <p>Protect your server from scrapers and bots using targeted Nginx rules and rate limiting.</p>
+      <div class="meta">Apr 22, 2025 · 4 min read</div>
+    </div>
+    <div class="card">
+      <div class="tag">Cloud</div>
+      <h3>Custom CloudFront Error Pages</h3>
+      <p>Replace generic AWS error pages with branded, helpful responses for 404s and 5xx errors.</p>
+      <div class="meta">Apr 15, 2025 · 5 min read</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="label-badge">D — Morphing Ink Blobs preview</div>
+
+</body>
+</html>

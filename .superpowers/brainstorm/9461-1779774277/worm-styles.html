@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Worm Animation Styles</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, sans-serif; background: #1a1a2e; color: #eee; padding: 24px; }
+  h2 { font-size: 1.4rem; margin-bottom: 6px; color: #fff; }
+  .subtitle { color: #aaa; margin-bottom: 24px; font-size: 0.95rem; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .card {
+    border: 2px solid #333; border-radius: 12px; overflow: hidden;
+    cursor: pointer; transition: border-color 0.2s, transform 0.2s; background: #111;
+  }
+  .card:hover { border-color: #e07b39; transform: translateY(-2px); }
+  .card.selected { border-color: #e07b39; box-shadow: 0 0 0 3px rgba(224,123,57,0.35); }
+  .preview { height: 200px; position: relative; overflow: hidden; background: #fdf6ee; }
+  .card-body { padding: 14px 16px; border-top: 1px solid #222; }
+  .card-body h3 { font-size: 1rem; color: #fff; margin-bottom: 4px; }
+  .card-body p { font-size: 0.82rem; color: #999; }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .content-hint {
+    position: absolute; inset: 0; pointer-events: none;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 8px; padding: 16px;
+  }
+  .line { border-radius: 4px; }
+  .selected-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #e07b39; color: #fff;
+    text-align: center; padding: 12px;
+    font-size: 0.9rem; font-weight: 600; display: none;
+  }
+  .selected-bar.visible { display: block; }
+</style>
+</head>
+<body>
+
+<h2>Worm Background — Pick a style</h2>
+<p class="subtitle">All use your blog's cream background (#fdf6ee). Worms animate live. Click to select.</p>
+
+<div class="cards">
+
+  <!-- A: Subtle warm worms (editorial palette) -->
+  <div class="card" id="card-a" onclick="selectCard('a','Subtle Warm Worms')">
+    <div class="preview">
+      <canvas id="c-a"></canvas>
+      <div class="content-hint">
+        <div class="line" style="width:70%;height:14px;background:rgba(45,31,15,0.13);"></div>
+        <div class="line" style="width:50%;height:10px;background:rgba(45,31,15,0.09);"></div>
+        <div class="line" style="width:40%;height:10px;background:rgba(45,31,15,0.09);"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Subtle Warm Worms</h3>
+      <p>Thin worms in your brand colours (orange, tan, brown). Very low opacity — elegant & readable.</p>
+    </div>
+  </div>
+
+  <!-- B: Neon glowing worms on dark -->
+  <div class="card" id="card-b" onclick="selectCard('b','Neon Glow Worms')">
+    <div class="preview" style="background:#0f0f1a;">
+      <canvas id="c-b"></canvas>
+      <div class="content-hint">
+        <div class="line" style="width:70%;height:14px;background:rgba(255,255,255,0.1);"></div>
+        <div class="line" style="width:50%;height:10px;background:rgba(255,255,255,0.07);"></div>
+        <div class="line" style="width:40%;height:10px;background:rgba(255,255,255,0.07);"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Neon Glow Worms (Dark BG)</h3>
+      <p>Vibrant glowing worms on dark background. Bold, techy, striking — best for dark mode.</p>
+    </div>
+  </div>
+
+  <!-- C: Fat pastel worms -->
+  <div class="card" id="card-c" onclick="selectCard('c','Fat Pastel Worms')">
+    <div class="preview">
+      <canvas id="c-c"></canvas>
+      <div class="content-hint">
+        <div class="line" style="width:70%;height:14px;background:rgba(45,31,15,0.13);"></div>
+        <div class="line" style="width:50%;height:10px;background:rgba(45,31,15,0.09);"></div>
+        <div class="line" style="width:40%;height:10px;background:rgba(45,31,15,0.09);"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Fat Pastel Worms</h3>
+      <p>Chunky rounded worms with pastel colours. Playful, friendly, hand-drawn feel.</p>
+    </div>
+  </div>
+
+  <!-- D: Ink trail worms -->
+  <div class="card" id="card-d" onclick="selectCard('d','Ink Trail Worms')">
+    <div class="preview">
+      <canvas id="c-d"></canvas>
+      <div class="content-hint">
+        <div class="line" style="width:70%;height:14px;background:rgba(45,31,15,0.13);"></div>
+        <div class="line" style="width:50%;height:10px;background:rgba(45,31,15,0.09);"></div>
+        <div class="line" style="width:40%;height:10px;background:rgba(45,31,15,0.09);"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>D — Ink Trail Worms</h3>
+      <p>Dark brown worms leaving fading ink trails. Very editorial — like pen on paper.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="selected-bar" id="selected-bar">✓ Selected: <span id="selected-label"></span> — tell me your choice in the terminal</div>
+
+<script>
+// =========================================================
+// Worm engine — reusable for all 4 canvases
+// =========================================================
+function createWorms(canvasId, opts) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.parentElement.offsetWidth || 400;
+  const H = canvas.parentElement.offsetHeight || 200;
+  canvas.width = W; canvas.height = H;
+
+  const {
+    count = 5,
+    segLen = 12,
+    segments = 18,
+    speed = 1.2,
+    thickness = 4,
+    colors,
+    opacity = 0.55,
+    glow = false,
+    glowColor,
+    bgColor = 'rgba(253,246,238,0.18)',
+    fadeTrail = true,
+  } = opts;
+
+  // each worm: array of {x,y} segments + angle
+  const worms = Array.from({length: count}, (_, i) => ({
+    segs: Array.from({length: segments}, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+    })),
+    angle: Math.random() * Math.PI * 2,
+    color: colors[i % colors.length],
+    speed: speed * (0.7 + Math.random() * 0.6),
+    turnSpeed: 0.04 + Math.random() * 0.04,
+    wiggle: 0,
+  }));
+
+  function tick() {
+    // fade trail
+    if (fadeTrail) {
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, W, H);
+    } else {
+      ctx.clearRect(0, 0, W, H);
+    }
+
+    worms.forEach(w => {
+      // move head
+      w.wiggle += w.turnSpeed;
+      w.angle += Math.sin(w.wiggle) * 0.12;
+      const head = w.segs[0];
+      const newHead = {
+        x: head.x + Math.cos(w.angle) * w.speed,
+        y: head.y + Math.sin(w.angle) * w.speed,
+      };
+      // bounce off walls softly
+      if (newHead.x < 0 || newHead.x > W) w.angle = Math.PI - w.angle;
+      if (newHead.y < 0 || newHead.y > H) w.angle = -w.angle;
+      newHead.x = Math.max(0, Math.min(W, newHead.x));
+      newHead.y = Math.max(0, Math.min(H, newHead.y));
+      w.segs.unshift(newHead);
+      w.segs.pop();
+
+      // draw worm as thick bezier chain
+      ctx.save();
+      ctx.globalAlpha = opacity;
+      if (glow) {
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = glowColor || w.color;
+      }
+      ctx.strokeStyle = w.color;
+      ctx.lineWidth = thickness * (segments / (segments + 4));
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      ctx.beginPath();
+      ctx.moveTo(w.segs[0].x, w.segs[0].y);
+      for (let i = 1; i < w.segs.length - 1; i++) {
+        const mx = (w.segs[i].x + w.segs[i+1].x) / 2;
+        const my = (w.segs[i].y + w.segs[i+1].y) / 2;
+        ctx.quadraticCurveTo(w.segs[i].x, w.segs[i].y, mx, my);
+        // taper towards tail
+        ctx.lineWidth = thickness * (1 - i / w.segs.length);
+      }
+      ctx.stroke();
+
+      // head dot
+      ctx.globalAlpha = opacity + 0.2;
+      ctx.beginPath();
+      ctx.arc(w.segs[0].x, w.segs[0].y, thickness * 0.7, 0, Math.PI * 2);
+      ctx.fillStyle = w.color;
+      ctx.fill();
+      ctx.restore();
+    });
+
+    requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+// A — Subtle warm (brand colors, cream bg)
+createWorms('c-a', {
+  count: 6, segments: 22, speed: 0.9, thickness: 5,
+  colors: ['#e07b39','#c4a882','#7c5c3e','#e8a96b','#d4875a'],
+  opacity: 0.35, bgColor: 'rgba(253,246,238,0.25)', glow: false,
+});
+
+// B — Neon glow (dark bg)
+createWorms('c-b', {
+  count: 7, segments: 28, speed: 1.2, thickness: 4,
+  colors: ['#ff6b35','#f7c59f','#00d4ff','#ff4fd8','#a8ff3e'],
+  opacity: 0.85, glow: true, bgColor: 'rgba(15,15,26,0.25)', fadeTrail: true,
+});
+
+// C — Fat pastel (cream bg)
+createWorms('c-c', {
+  count: 4, segments: 16, speed: 0.7, thickness: 12,
+  colors: ['rgba(224,123,57,0.5)','rgba(196,168,130,0.55)','rgba(232,169,107,0.5)','rgba(240,200,160,0.55)'],
+  opacity: 0.75, bgColor: 'rgba(253,246,238,0.2)', glow: false,
+});
+
+// D — Ink trail (editorial dark, cream bg)
+createWorms('c-d', {
+  count: 5, segments: 30, speed: 0.8, thickness: 3,
+  colors: ['rgba(45,31,15,0.7)','rgba(124,92,62,0.6)','rgba(45,31,15,0.5)','rgba(80,50,25,0.65)'],
+  opacity: 0.6, bgColor: 'rgba(253,246,238,0.15)', glow: false, fadeTrail: true,
+});
+
+// ---- Selection ----
+function selectCard(id, label) {
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('card-' + id).classList.add('selected');
+  document.getElementById('selected-label').textContent = label;
+  document.getElementById('selected-bar').classList.add('visible');
+  try {
+    fetch('/__select', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({type:'click', choice: id, text: label, timestamp: Date.now()})
+    }).catch(()=>{});
+  } catch(e) {}
+}
+</script>
+</body>
+</html>

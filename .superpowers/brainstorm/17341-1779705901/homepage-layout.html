@@ -1,0 +1,150 @@
+<h2>How should the homepage be laid out?</h2>
+<p class="subtitle">After the navbar, what does the visitor see first — and how are posts displayed?</p>
+
+<div class="cards">
+
+  <!-- Option A: Hero + Card Grid -->
+  <div class="card" data-choice="hero-grid" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fdf6ee; padding:14px; font-family:'Inter',sans-serif;">
+      <!-- Navbar -->
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#fff;border-radius:6px;margin-bottom:8px;border-bottom:2px solid #f5ebe0;">
+        <span style="font-weight:700;font-size:11px;color:#2d1f0f;">Devanshu Patil</span>
+        <div style="display:flex;gap:8px;font-size:9px;color:#7c5c3e;">
+          <span>Frontend</span><span>Backend</span><span>Cloud</span><span style="color:#e07b39;font-weight:600;">AI</span>
+        </div>
+      </div>
+      <!-- Hero -->
+      <div style="text-align:center;padding:10px 8px;background:linear-gradient(180deg,#fdf6ee,#fef3e6);border-radius:6px;margin-bottom:8px;border:1px solid #f0ddc8;">
+        <div style="font-size:13px;font-weight:700;color:#2d1f0f;font-family:'Georgia',serif;line-height:1.3;">Learning daily,<br>growing endlessly</div>
+        <div style="font-size:9px;color:#7c5c3e;margin-top:4px;">A space for documenting growth & sharing ideas</div>
+        <div style="margin-top:6px;background:#e07b39;color:#fff;font-size:8px;padding:3px 10px;border-radius:20px;display:inline-block;">Explore posts →</div>
+      </div>
+      <!-- 2x2 Card Grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+        <div style="background:#fff;border-radius:5px;padding:7px;border:1px solid #f0ddc8;">
+          <div style="font-size:7px;color:#e07b39;text-transform:uppercase;font-weight:600;margin-bottom:2px;">AI</div>
+          <div style="font-size:9px;font-weight:600;color:#2d1f0f;line-height:1.3;">Go + LLM Streaming Pipeline</div>
+          <div style="font-size:7px;color:#aaa;margin-top:2px;">8 min read</div>
+        </div>
+        <div style="background:#fff;border-radius:5px;padding:7px;border:1px solid #f0ddc8;">
+          <div style="font-size:7px;color:#e07b39;text-transform:uppercase;font-weight:600;margin-bottom:2px;">Cloud</div>
+          <div style="font-size:9px;font-weight:600;color:#2d1f0f;line-height:1.3;">Lambda in VPC: Best Practices</div>
+          <div style="font-size:7px;color:#aaa;margin-top:2px;">5 min read</div>
+        </div>
+        <div style="background:#fff;border-radius:5px;padding:7px;border:1px solid #f0ddc8;">
+          <div style="font-size:7px;color:#e07b39;text-transform:uppercase;font-weight:600;margin-bottom:2px;">Frontend</div>
+          <div style="font-size:9px;font-weight:600;color:#2d1f0f;line-height:1.3;">Nuxt 4 Content Collections</div>
+          <div style="font-size:7px;color:#aaa;margin-top:2px;">6 min read</div>
+        </div>
+        <div style="background:#fff;border-radius:5px;padding:7px;border:1px solid #f0ddc8;">
+          <div style="font-size:7px;color:#e07b39;text-transform:uppercase;font-weight:600;margin-bottom:2px;">Backend</div>
+          <div style="font-size:9px;font-weight:600;color:#2d1f0f;line-height:1.3;">Go Unit Testing Patterns</div>
+          <div style="font-size:7px;color:#aaa;margin-top:2px;">7 min read</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Hero + Card Grid</h3>
+      <p>Centered hero with tagline, then a 2-column card grid of latest posts. Clean and balanced.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Magazine / Featured + List -->
+  <div class="card" data-choice="magazine" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fdf6ee; padding:14px; font-family:'Inter',sans-serif;">
+      <!-- Navbar -->
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#fff;border-radius:6px;margin-bottom:8px;border-bottom:2px solid #f5ebe0;">
+        <span style="font-weight:700;font-size:11px;color:#2d1f0f;">Devanshu Patil</span>
+        <div style="display:flex;gap:8px;font-size:9px;color:#7c5c3e;">
+          <span>Frontend</span><span>Backend</span><span>Cloud</span><span style="color:#e07b39;font-weight:600;">AI</span>
+        </div>
+      </div>
+      <!-- Big featured post -->
+      <div style="background:#fff;border-radius:6px;padding:9px;border:1px solid #f0ddc8;margin-bottom:6px;border-left:3px solid #e07b39;">
+        <div style="font-size:7px;color:#e07b39;text-transform:uppercase;font-weight:600;margin-bottom:2px;">✦ Featured · AI</div>
+        <div style="font-size:11px;font-weight:700;color:#2d1f0f;font-family:'Georgia',serif;line-height:1.3;">Building a real-time AI pipeline with Go and streaming LLMs</div>
+        <div style="font-size:8px;color:#7c5c3e;margin-top:3px;line-height:1.4;">A deep dive into server-sent events, Go channels, and OpenAI streaming...</div>
+        <div style="font-size:7px;color:#aaa;margin-top:3px;">May 2025 · 8 min read</div>
+      </div>
+      <!-- Small list -->
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="background:#fff;border-radius:5px;padding:6px 8px;border:1px solid #f0ddc8;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:7px;color:#e07b39;font-weight:600;margin-bottom:1px;">Cloud</div>
+            <div style="font-size:9px;font-weight:600;color:#2d1f0f;">Lambda in VPC Best Practices</div>
+          </div>
+          <div style="font-size:7px;color:#aaa;">5 min</div>
+        </div>
+        <div style="background:#fff;border-radius:5px;padding:6px 8px;border:1px solid #f0ddc8;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:7px;color:#e07b39;font-weight:600;margin-bottom:1px;">Frontend</div>
+            <div style="font-size:9px;font-weight:600;color:#2d1f0f;">Nuxt 4 Content Collections</div>
+          </div>
+          <div style="font-size:7px;color:#aaa;">6 min</div>
+        </div>
+        <div style="background:#fff;border-radius:5px;padding:6px 8px;border:1px solid #f0ddc8;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:7px;color:#e07b39;font-weight:600;margin-bottom:1px;">Backend</div>
+            <div style="font-size:9px;font-weight:600;color:#2d1f0f;">Go Unit Testing Patterns</div>
+          </div>
+          <div style="font-size:7px;color:#aaa;">7 min</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Magazine: Featured + List</h3>
+      <p>One big featured post up top, then a compact list below. Draws attention to your best content.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Minimal Header + Full List -->
+  <div class="card" data-choice="minimal-list" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fdf6ee; padding:14px; font-family:'Inter',sans-serif;">
+      <!-- Navbar -->
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#fff;border-radius:6px;margin-bottom:8px;border-bottom:2px solid #f5ebe0;">
+        <span style="font-weight:700;font-size:11px;color:#2d1f0f;">Devanshu Patil</span>
+        <div style="display:flex;gap:8px;font-size:9px;color:#7c5c3e;">
+          <span>Frontend</span><span>Backend</span><span>Cloud</span><span style="color:#e07b39;font-weight:600;">AI</span>
+        </div>
+      </div>
+      <!-- Compact header -->
+      <div style="padding:8px 4px 6px 4px;border-bottom:1px solid #f0ddc8;margin-bottom:6px;">
+        <div style="font-size:12px;font-weight:700;color:#2d1f0f;font-family:'Georgia',serif;">All Posts</div>
+        <div style="font-size:8px;color:#7c5c3e;margin-top:1px;">Learning daily, growing endlessly</div>
+      </div>
+      <!-- Full list with dividers -->
+      <div>
+        <div style="padding:6px 4px;border-bottom:1px solid #f5ebe0;">
+          <div style="display:flex;justify-content:space-between;align-items:start;">
+            <div style="flex:1;">
+              <div style="display:flex;gap:5px;align-items:center;margin-bottom:2px;">
+                <span style="font-size:7px;color:#fff;background:#e07b39;padding:1px 5px;border-radius:3px;font-weight:600;">AI</span>
+              </div>
+              <div style="font-size:9px;font-weight:600;color:#2d1f0f;line-height:1.3;">Go + LLM Streaming Pipeline</div>
+              <div style="font-size:7px;color:#aaa;margin-top:1px;">May 2025 · 8 min</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:6px 4px;border-bottom:1px solid #f5ebe0;">
+          <div style="display:flex;gap:5px;align-items:center;margin-bottom:2px;">
+            <span style="font-size:7px;color:#fff;background:#7c5c3e;padding:1px 5px;border-radius:3px;font-weight:600;">Cloud</span>
+          </div>
+          <div style="font-size:9px;font-weight:600;color:#2d1f0f;line-height:1.3;">Lambda in VPC Best Practices</div>
+          <div style="font-size:7px;color:#aaa;margin-top:1px;">Apr 2025 · 5 min</div>
+        </div>
+        <div style="padding:6px 4px;">
+          <div style="display:flex;gap:5px;align-items:center;margin-bottom:2px;">
+            <span style="font-size:7px;color:#fff;background:#526488;padding:1px 5px;border-radius:3px;font-weight:600;">Frontend</span>
+          </div>
+          <div style="font-size:9px;font-weight:600;color:#2d1f0f;line-height:1.3;">Nuxt 4 Content Collections</div>
+          <div style="font-size:7px;color:#aaa;margin-top:1px;">Mar 2025 · 6 min</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Minimal Header + Full List</h3>
+      <p>No hero, straight to posts. Clean and fast. Every post gets equal weight — no favorites.</p>
+    </div>
+  </div>
+
+</div>

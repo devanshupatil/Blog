@@ -1,0 +1,213 @@
+<h2>Dark mode — black background, different vibes</h2>
+<p class="subtitle">All on black (#0d0d0d). Different aurora colors and UX styles. Pick the one that feels most "you".</p>
+
+<style>
+.theme-scene {
+  width: 100%;
+  height: 215px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: blobDrift ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes blobDrift {
+  0%   { transform: translate(0,0) scale(1); }
+  33%  { transform: translate(14px,-10px) scale(1.08); }
+  66%  { transform: translate(-10px,12px) scale(0.94); }
+  100% { transform: translate(8px,-5px) scale(1.05); }
+}
+.fake-nav {
+  position: absolute; top:0; left:0; right:0;
+  height: 32px;
+  display: flex; align-items: center; padding: 0 14px;
+  justify-content: space-between;
+  z-index: 2;
+}
+.fake-card {
+  position: absolute;
+  border-radius: 8px;
+  padding: 9px 11px;
+  z-index: 2;
+}
+.fc-title { font-size:11px; font-weight:700; margin-bottom:3px; }
+.fc-meta  { font-size:9px; opacity:0.45; margin-bottom:5px; }
+.fc-bar   { height:5px; border-radius:3px; margin-bottom:3px; opacity:0.22; }
+.fc-tag   { display:inline-block; font-size:8px; font-weight:600; padding:2px 6px; border-radius:999px; margin-top:3px; }
+.bg-hex   { position:absolute; bottom:5px; right:8px; font-size:9px; opacity:0.25; font-family:monospace; z-index:3; color:#fff; }
+/* Featured post strip */
+.fake-hero {
+  position: absolute; top: 38px; left: 12px; right: 12px;
+  border-radius: 6px; height: 60px; z-index: 2;
+  display: flex; align-items: center; padding: 0 12px; gap: 10px;
+}
+.fake-hero-text { flex:1; }
+.fake-hero-img  { width: 50px; height: 42px; border-radius:4px; opacity:0.35; }
+</style>
+
+<div class="cards">
+
+  <!-- 1: Cosmic Purple — immersive, deep, dev-portfolio energy -->
+  <div class="card" data-choice="cosmic-purple" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#0d0d0d;color:#ede9fe;">
+        <div class="blob" style="width:300px;height:300px;top:-100px;left:-60px;background:rgba(124,58,237,0.30);animation-duration:7s;"></div>
+        <div class="blob" style="width:240px;height:240px;top:70px;right:-50px;background:rgba(79,70,229,0.22);animation-duration:10s;animation-delay:-4s;"></div>
+        <div class="blob" style="width:180px;height:180px;bottom:-50px;left:35%;background:rgba(167,139,250,0.18);animation-duration:8s;animation-delay:-2s;"></div>
+        <div class="fake-nav" style="background:rgba(13,13,13,0.6);border-bottom:1px solid rgba(167,139,250,0.15);">
+          <span style="font-size:12px;font-weight:700;color:#c4b5fd;">DevBlog</span>
+          <span style="font-size:10px;opacity:0.5;color:#ede9fe;">Home · Blog · About</span>
+        </div>
+        <div class="fake-hero" style="background:rgba(124,58,237,0.12);border:1px solid rgba(167,139,250,0.15);">
+          <div class="fake-hero-text">
+            <div style="font-size:11px;font-weight:700;color:#ede9fe;margin-bottom:3px;">Featured: Building an MCP Server</div>
+            <div style="font-size:9px;color:#a78bfa;opacity:0.8;">May 2025 · 6 min read</div>
+          </div>
+          <div class="fake-hero-img" style="background:linear-gradient(135deg,#7c3aed,#4f46e5);"></div>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(167,139,250,0.18);bottom:12px;left:12px;width:43%;">
+          <div class="fc-title" style="color:#ede9fe;">Git Bisect Deep Dive</div>
+          <div class="fc-meta" style="color:#a78bfa;">Apr 2025</div>
+          <div class="fc-bar" style="width:85%;background:#a78bfa;"></div>
+          <span class="fc-tag" style="background:rgba(124,58,237,0.2);color:#c4b5fd;">Git</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(167,139,250,0.18);bottom:12px;right:12px;width:43%;">
+          <div class="fc-title" style="color:#ede9fe;">Golang Unit Testing</div>
+          <div class="fc-meta" style="color:#a78bfa;">Mar 2025</div>
+          <div class="fc-bar" style="width:70%;background:#a78bfa;"></div>
+          <span class="fc-tag" style="background:rgba(124,58,237,0.2);color:#c4b5fd;">Go</span>
+        </div>
+        <span class="bg-hex">#0d0d0d</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Cosmic Purple</h3>
+      <p>Deep violet/indigo aurora. Immersive, techy, premium. Popular among devs — feels like VS Code dark theme.</p>
+    </div>
+  </div>
+
+  <!-- 2: Arctic Teal — clean, modern, open source energy -->
+  <div class="card" data-choice="arctic-teal" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#050e0e;color:#ccfbf1;">
+        <div class="blob" style="width:300px;height:300px;top:-100px;left:-60px;background:rgba(13,148,136,0.28);animation-duration:7s;"></div>
+        <div class="blob" style="width:240px;height:240px;top:70px;right:-50px;background:rgba(6,182,212,0.20);animation-duration:10s;animation-delay:-4s;"></div>
+        <div class="blob" style="width:180px;height:180px;bottom:-50px;left:35%;background:rgba(45,212,191,0.15);animation-duration:8s;animation-delay:-2s;"></div>
+        <div class="fake-nav" style="background:rgba(5,14,14,0.6);border-bottom:1px solid rgba(45,212,191,0.15);">
+          <span style="font-size:12px;font-weight:700;color:#5eead4;">DevBlog</span>
+          <span style="font-size:10px;opacity:0.5;color:#ccfbf1;">Home · Blog · About</span>
+        </div>
+        <div class="fake-hero" style="background:rgba(13,148,136,0.12);border:1px solid rgba(45,212,191,0.15);">
+          <div class="fake-hero-text">
+            <div style="font-size:11px;font-weight:700;color:#ccfbf1;margin-bottom:3px;">Featured: Building an MCP Server</div>
+            <div style="font-size:9px;color:#2dd4bf;opacity:0.8;">May 2025 · 6 min read</div>
+          </div>
+          <div class="fake-hero-img" style="background:linear-gradient(135deg,#0d9488,#06b6d4);"></div>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(45,212,191,0.18);bottom:12px;left:12px;width:43%;">
+          <div class="fc-title" style="color:#ccfbf1;">Git Bisect Deep Dive</div>
+          <div class="fc-meta" style="color:#2dd4bf;">Apr 2025</div>
+          <div class="fc-bar" style="width:85%;background:#2dd4bf;"></div>
+          <span class="fc-tag" style="background:rgba(13,148,136,0.2);color:#5eead4;">Git</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(45,212,191,0.18);bottom:12px;right:12px;width:43%;">
+          <div class="fc-title" style="color:#ccfbf1;">Golang Unit Testing</div>
+          <div class="fc-meta" style="color:#2dd4bf;">Mar 2025</div>
+          <div class="fc-bar" style="width:70%;background:#2dd4bf;"></div>
+          <span class="fc-tag" style="background:rgba(13,148,136,0.2);color:#5eead4;">Go</span>
+        </div>
+        <span class="bg-hex">#050e0e</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Arctic Teal</h3>
+      <p>Teal/cyan aurora on near-black. Crisp, clean, fresh. Great readability — feels like a terminal + modern SaaS mashup.</p>
+    </div>
+  </div>
+
+  <!-- 3: Ember Night — warm but dark, unique personal blog feel -->
+  <div class="card" data-choice="ember-night" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#0d0805;color:#fef3c7;">
+        <div class="blob" style="width:300px;height:300px;top:-100px;left:-60px;background:rgba(234,88,12,0.25);animation-duration:7s;"></div>
+        <div class="blob" style="width:240px;height:240px;top:70px;right:-50px;background:rgba(180,83,9,0.18);animation-duration:10s;animation-delay:-4s;"></div>
+        <div class="blob" style="width:200px;height:200px;bottom:-60px;left:30%;background:rgba(251,146,60,0.14);animation-duration:8s;animation-delay:-2s;"></div>
+        <div class="fake-nav" style="background:rgba(13,8,5,0.65);border-bottom:1px solid rgba(251,146,60,0.15);">
+          <span style="font-size:12px;font-weight:700;color:#fb923c;">DevBlog</span>
+          <span style="font-size:10px;opacity:0.5;color:#fef3c7;">Home · Blog · About</span>
+        </div>
+        <div class="fake-hero" style="background:rgba(234,88,12,0.12);border:1px solid rgba(251,146,60,0.15);">
+          <div class="fake-hero-text">
+            <div style="font-size:11px;font-weight:700;color:#fef3c7;margin-bottom:3px;">Featured: Building an MCP Server</div>
+            <div style="font-size:9px;color:#fb923c;opacity:0.8;">May 2025 · 6 min read</div>
+          </div>
+          <div class="fake-hero-img" style="background:linear-gradient(135deg,#ea580c,#b45309);"></div>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.04);border:1px solid rgba(251,146,60,0.18);bottom:12px;left:12px;width:43%;">
+          <div class="fc-title" style="color:#fef3c7;">Git Bisect Deep Dive</div>
+          <div class="fc-meta" style="color:#fb923c;">Apr 2025</div>
+          <div class="fc-bar" style="width:85%;background:#fb923c;"></div>
+          <span class="fc-tag" style="background:rgba(234,88,12,0.2);color:#fb923c;">Git</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.04);border:1px solid rgba(251,146,60,0.18);bottom:12px;right:12px;width:43%;">
+          <div class="fc-title" style="color:#fef3c7;">Golang Unit Testing</div>
+          <div class="fc-meta" style="color:#fb923c;">Mar 2025</div>
+          <div class="fc-bar" style="width:70%;background:#fb923c;"></div>
+          <span class="fc-tag" style="background:rgba(234,88,12,0.2);color:#fb923c;">Go</span>
+        </div>
+        <span class="bg-hex">#0d0805</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Ember Night</h3>
+      <p>Dark near-black with orange-ember blobs. Warm, glowing, like embers in the dark. Feels handcrafted and personal.</p>
+    </div>
+  </div>
+
+  <!-- 4: Neon Noir — black + cyan+purple dual aurora, cyberpunk edge -->
+  <div class="card" data-choice="neon-noir" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#080810;color:#f0f4ff;">
+        <div class="blob" style="width:280px;height:280px;top:-90px;left:-50px;background:rgba(99,102,241,0.28);animation-duration:7s;"></div>
+        <div class="blob" style="width:220px;height:220px;top:60px;right:-40px;background:rgba(6,182,212,0.22);animation-duration:10s;animation-delay:-4s;"></div>
+        <div class="blob" style="width:180px;height:180px;bottom:-50px;left:40%;background:rgba(139,92,246,0.16);animation-duration:8s;animation-delay:-2s;"></div>
+        <div class="blob" style="width:140px;height:140px;bottom:20px;left:10%;background:rgba(6,182,212,0.12);animation-duration:9s;animation-delay:-1s;"></div>
+        <div class="fake-nav" style="background:rgba(8,8,16,0.65);border-bottom:1px solid rgba(99,102,241,0.18);">
+          <span style="font-size:12px;font-weight:700;background:linear-gradient(90deg,#818cf8,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">DevBlog</span>
+          <span style="font-size:10px;opacity:0.5;color:#f0f4ff;">Home · Blog · About</span>
+        </div>
+        <div class="fake-hero" style="background:rgba(99,102,241,0.10);border:1px solid rgba(99,102,241,0.18);">
+          <div class="fake-hero-text">
+            <div style="font-size:11px;font-weight:700;color:#f0f4ff;margin-bottom:3px;">Featured: Building an MCP Server</div>
+            <div style="font-size:9px;color:#22d3ee;opacity:0.8;">May 2025 · 6 min read</div>
+          </div>
+          <div class="fake-hero-img" style="background:linear-gradient(135deg,#6366f1,#06b6d4);"></div>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(99,102,241,0.20);bottom:12px;left:12px;width:43%;">
+          <div class="fc-title" style="color:#f0f4ff;">Git Bisect Deep Dive</div>
+          <div class="fc-meta" style="color:#22d3ee;">Apr 2025</div>
+          <div class="fc-bar" style="width:85%;background:#818cf8;"></div>
+          <span class="fc-tag" style="background:rgba(99,102,241,0.2);color:#818cf8;">Git</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(6,182,212,0.20);bottom:12px;right:12px;width:43%;">
+          <div class="fc-title" style="color:#f0f4ff;">Golang Unit Testing</div>
+          <div class="fc-meta" style="color:#22d3ee;">Mar 2025</div>
+          <div class="fc-bar" style="width:70%;background:#22d3ee;"></div>
+          <span class="fc-tag" style="background:rgba(6,182,212,0.2);color:#22d3ee;">Go</span>
+        </div>
+        <span class="bg-hex">#080810</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Neon Noir</h3>
+      <p>Black + dual cyan & indigo aurora. Cyberpunk edge — like VS Code + synthwave. Bold, modern, high energy.</p>
+    </div>
+  </div>
+
+</div>

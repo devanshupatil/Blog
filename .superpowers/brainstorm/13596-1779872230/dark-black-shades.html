@@ -1,0 +1,191 @@
+<h2>Dark mode — black shades with aurora</h2>
+<p class="subtitle">All options use black/near-black backgrounds. Pick the shade and blob color combination that feels right.</p>
+
+<style>
+.theme-scene {
+  width: 100%;
+  height: 210px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: blobDrift ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes blobDrift {
+  0%   { transform: translate(0,0) scale(1); }
+  33%  { transform: translate(14px,-10px) scale(1.08); }
+  66%  { transform: translate(-10px,12px) scale(0.94); }
+  100% { transform: translate(8px,-5px) scale(1.05); }
+}
+.fake-nav {
+  position: absolute; top:0; left:0; right:0;
+  height: 32px;
+  display: flex; align-items: center; padding: 0 14px;
+  justify-content: space-between;
+  z-index: 2;
+}
+.fake-card {
+  position: absolute;
+  border-radius: 8px;
+  padding: 9px 11px;
+  z-index: 2;
+}
+.fake-card-title { font-size:11px; font-weight:700; margin-bottom:3px; }
+.fake-card-meta  { font-size:9px; opacity:0.45; margin-bottom:5px; }
+.fake-bar { height:5px; border-radius:3px; margin-bottom:3px; opacity:0.22; }
+.fake-tag {
+  display:inline-block; font-size:8px; font-weight:600;
+  padding:2px 6px; border-radius:999px; margin-top:3px;
+}
+.bg-label {
+  position: absolute; bottom: 6px; right: 10px;
+  font-size: 9px; opacity: 0.3; font-family: monospace; z-index:3;
+}
+</style>
+
+<div class="cards">
+
+  <!-- Shade 1: Pure Black + amber blobs -->
+  <div class="card" data-choice="pure-black-amber" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#000000;color:#f1f5f9;">
+        <div class="blob" style="width:280px;height:280px;top:-90px;left:-60px;background:rgba(224,123,57,0.22);animation-duration:7s;"></div>
+        <div class="blob" style="width:220px;height:220px;top:50px;right:-50px;background:rgba(196,168,130,0.16);animation-duration:10s;animation-delay:-4s;"></div>
+        <div class="blob" style="width:180px;height:180px;bottom:-50px;left:35%;background:rgba(212,135,90,0.13);animation-duration:8s;animation-delay:-2s;"></div>
+        <div class="fake-nav" style="background:rgba(0,0,0,0.55);border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span style="font-size:12px;font-weight:700;color:#e8a96b;">DevBlog</span>
+          <span style="font-size:10px;opacity:0.5;color:#f1f5f9;">Home · Blog · About</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.04);border:1px solid rgba(224,123,57,0.18);bottom:14px;left:12px;width:44%;">
+          <div class="fake-card-title" style="color:#f1f5f9;">Building an MCP Server</div>
+          <div class="fake-card-meta" style="color:#e8a96b;">May 2025</div>
+          <div class="fake-bar" style="width:88%;background:#e07b39;"></div>
+          <div class="fake-bar" style="width:62%;background:#e07b39;"></div>
+          <span class="fake-tag" style="background:rgba(224,123,57,0.18);color:#e8a96b;">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.04);border:1px solid rgba(224,123,57,0.18);bottom:14px;right:12px;width:44%;">
+          <div class="fake-card-title" style="color:#f1f5f9;">Git Bisect Deep Dive</div>
+          <div class="fake-card-meta" style="color:#e8a96b;">Apr 2025</div>
+          <div class="fake-bar" style="width:75%;background:#e07b39;"></div>
+          <div class="fake-bar" style="width:52%;background:#e07b39;"></div>
+          <span class="fake-tag" style="background:rgba(224,123,57,0.18);color:#e8a96b;">Git</span>
+        </div>
+        <span class="bg-label" style="color:#fff;">#000000</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Pure Black + Amber</h3>
+      <p>True #000000 AMOLED black. Warm amber blobs — keeps brand consistent with light mode. Maximum contrast.</p>
+    </div>
+  </div>
+
+  <!-- Shade 2: Off-black #0a0a0a + amber blobs (richer blobs) -->
+  <div class="card" data-choice="off-black-amber" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#0a0a0a;color:#f1f5f9;">
+        <div class="blob" style="width:300px;height:300px;top:-100px;left:-70px;background:rgba(224,123,57,0.28);animation-duration:7s;"></div>
+        <div class="blob" style="width:240px;height:240px;top:60px;right:-60px;background:rgba(212,135,90,0.20);animation-duration:10s;animation-delay:-4s;"></div>
+        <div class="blob" style="width:200px;height:200px;bottom:-60px;left:30%;background:rgba(232,169,107,0.16);animation-duration:8s;animation-delay:-2s;"></div>
+        <div class="fake-nav" style="background:rgba(10,10,10,0.6);border-bottom:1px solid rgba(255,255,255,0.07);">
+          <span style="font-size:12px;font-weight:700;color:#e8a96b;">DevBlog</span>
+          <span style="font-size:10px;opacity:0.5;color:#f1f5f9;">Home · Blog · About</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(224,123,57,0.20);bottom:14px;left:12px;width:44%;">
+          <div class="fake-card-title" style="color:#f1f5f9;">Building an MCP Server</div>
+          <div class="fake-card-meta" style="color:#e8a96b;">May 2025</div>
+          <div class="fake-bar" style="width:88%;background:#e07b39;"></div>
+          <div class="fake-bar" style="width:62%;background:#e07b39;"></div>
+          <span class="fake-tag" style="background:rgba(224,123,57,0.22);color:#e8a96b;">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(224,123,57,0.20);bottom:14px;right:12px;width:44%;">
+          <div class="fake-card-title" style="color:#f1f5f9;">Git Bisect Deep Dive</div>
+          <div class="fake-card-meta" style="color:#e8a96b;">Apr 2025</div>
+          <div class="fake-bar" style="width:75%;background:#e07b39;"></div>
+          <div class="fake-bar" style="width:52%;background:#e07b39;"></div>
+          <span class="fake-tag" style="background:rgba(224,123,57,0.22);color:#e8a96b;">Git</span>
+        </div>
+        <span class="bg-label" style="color:#fff;">#0a0a0a</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Off-Black + Richer Amber</h3>
+      <p>#0a0a0a — nearly black but blobs appear richer and warmer. Slightly softer on eyes than pure black.</p>
+    </div>
+  </div>
+
+  <!-- Shade 3: Deep charcoal #111111 + gold/orange blobs -->
+  <div class="card" data-choice="charcoal-gold" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#111111;color:#fafafa;">
+        <div class="blob" style="width:300px;height:300px;top:-100px;left:-70px;background:rgba(251,191,36,0.20);animation-duration:7s;"></div>
+        <div class="blob" style="width:240px;height:240px;top:60px;right:-60px;background:rgba(245,158,11,0.16);animation-duration:10s;animation-delay:-4s;"></div>
+        <div class="blob" style="width:200px;height:200px;bottom:-60px;left:30%;background:rgba(217,119,6,0.13);animation-duration:8s;animation-delay:-2s;"></div>
+        <div class="fake-nav" style="background:rgba(17,17,17,0.6);border-bottom:1px solid rgba(255,255,255,0.07);">
+          <span style="font-size:12px;font-weight:700;color:#fbbf24;">DevBlog</span>
+          <span style="font-size:10px;opacity:0.5;color:#fafafa;">Home · Blog · About</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.04);border:1px solid rgba(251,191,36,0.18);bottom:14px;left:12px;width:44%;">
+          <div class="fake-card-title" style="color:#fafafa;">Building an MCP Server</div>
+          <div class="fake-card-meta" style="color:#fbbf24;">May 2025</div>
+          <div class="fake-bar" style="width:88%;background:#f59e0b;"></div>
+          <div class="fake-bar" style="width:62%;background:#f59e0b;"></div>
+          <span class="fake-tag" style="background:rgba(251,191,36,0.18);color:#fbbf24;">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.04);border:1px solid rgba(251,191,36,0.18);bottom:14px;right:12px;width:44%;">
+          <div class="fake-card-title" style="color:#fafafa;">Git Bisect Deep Dive</div>
+          <div class="fake-card-meta" style="color:#fbbf24;">Apr 2025</div>
+          <div class="fake-bar" style="width:75%;background:#f59e0b;"></div>
+          <div class="fake-bar" style="width:52%;background:#f59e0b;"></div>
+          <span class="fake-tag" style="background:rgba(251,191,36,0.18);color:#fbbf24;">Git</span>
+        </div>
+        <span class="bg-label" style="color:#fff;">#111111</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Deep Charcoal + Gold</h3>
+      <p>#111111 with golden-yellow blobs. Warmer, luxurious glow. Still very dark but with a rich metallic feel.</p>
+    </div>
+  </div>
+
+  <!-- Shade 4: Dark #0d0d0d + dual amber + white blobs (frosted look) -->
+  <div class="card" data-choice="black-frosted" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="theme-scene" style="background:#0d0d0d;color:#f8fafc;">
+        <div class="blob" style="width:300px;height:300px;top:-100px;left:-70px;background:rgba(224,123,57,0.22);animation-duration:7s;"></div>
+        <div class="blob" style="width:240px;height:240px;top:60px;right:-60px;background:rgba(255,255,255,0.06);animation-duration:10s;animation-delay:-4s;"></div>
+        <div class="blob" style="width:200px;height:200px;bottom:-60px;left:25%;background:rgba(212,135,90,0.15);animation-duration:8s;animation-delay:-2s;"></div>
+        <div class="blob" style="width:160px;height:160px;top:40px;left:40%;background:rgba(255,255,255,0.04);animation-duration:11s;animation-delay:-1s;"></div>
+        <div class="fake-nav" style="background:rgba(13,13,13,0.6);border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="font-size:12px;font-weight:700;color:#e8a96b;">DevBlog</span>
+          <span style="font-size:10px;opacity:0.5;color:#f8fafc;">Home · Blog · About</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);bottom:14px;left:12px;width:44%;backdrop-filter:blur(8px);">
+          <div class="fake-card-title" style="color:#f8fafc;">Building an MCP Server</div>
+          <div class="fake-card-meta" style="color:#e8a96b;">May 2025</div>
+          <div class="fake-bar" style="width:88%;background:#e07b39;"></div>
+          <div class="fake-bar" style="width:62%;background:#fff;"></div>
+          <span class="fake-tag" style="background:rgba(224,123,57,0.2);color:#e8a96b;">Dev Tools</span>
+        </div>
+        <div class="fake-card" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);bottom:14px;right:12px;width:44%;backdrop-filter:blur(8px);">
+          <div class="fake-card-title" style="color:#f8fafc;">Git Bisect Deep Dive</div>
+          <div class="fake-card-meta" style="color:#e8a96b;">Apr 2025</div>
+          <div class="fake-bar" style="width:75%;background:#e07b39;"></div>
+          <div class="fake-bar" style="width:52%;background:#fff;"></div>
+          <span class="fake-tag" style="background:rgba(224,123,57,0.2);color:#e8a96b;">Git</span>
+        </div>
+        <span class="bg-label" style="color:#fff;">#0d0d0d</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Black + Frosted Glass Cards</h3>
+      <p>#0d0d0d with amber blobs + white mist. Cards get a frosted-glass feel. Sleek, modern, Apple-inspired.</p>
+    </div>
+  </div>
+
+</div>

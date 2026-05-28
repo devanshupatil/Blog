@@ -1,0 +1,119 @@
+<h2>Aurora blobs — dark vs light mode</h2>
+<p class="subtitle">Pick the dark mode color palette you prefer. Light mode keeps warm amber. Click a dark mode option to select it.</p>
+
+<style>
+.scene {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: blobDrift ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes blobDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(15px, -10px) scale(1.08); }
+  66%  { transform: translate(-10px, 12px) scale(0.95); }
+  100% { transform: translate(8px, -5px) scale(1.05); }
+}
+.label-overlay {
+  position: absolute;
+  top: 10px; left: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+.mock-content {
+  position: absolute;
+  bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.mock-bar {
+  border-radius: 4px;
+  opacity: 0.18;
+}
+</style>
+
+<div class="split">
+
+  <!-- LIGHT MODE (always shown, not selectable) -->
+  <div class="mockup">
+    <div class="mockup-header">Light mode (current warm amber)</div>
+    <div class="mockup-body" style="padding:0;background:#1a1a2e;">
+      <div class="scene" style="background:#fdf6ee;">
+        <div class="blob" style="width:260px;height:260px;top:-60px;left:-40px;background:rgba(224,123,57,0.22);animation-duration:7s;"></div>
+        <div class="blob" style="width:200px;height:200px;top:30px;right:-30px;background:rgba(196,168,130,0.18);animation-duration:9s;animation-delay:-3s;"></div>
+        <div class="blob" style="width:160px;height:160px;bottom:-40px;left:35%;background:rgba(212,135,90,0.15);animation-duration:8s;animation-delay:-1.5s;"></div>
+        <span class="label-overlay" style="color:#7c5c3e;">Light Mode</span>
+        <div class="mock-content">
+          <div class="mock-bar" style="width:160px;height:14px;background:#7c5c3e;"></div>
+          <div class="mock-bar" style="width:110px;height:10px;background:#7c5c3e;"></div>
+          <div class="mock-bar" style="width:130px;height:10px;background:#7c5c3e;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DARK MODE OPTIONS stacked -->
+  <div style="display:flex;flex-direction:column;gap:12px;flex:1;">
+
+    <!-- Dark Option 1: Deep purple/indigo -->
+    <div class="card" data-choice="purple" onclick="toggleSelect(this)" style="margin:0;">
+      <div class="card-image" style="padding:8px 8px 0;">
+        <div class="scene" style="background:#0f0f1a;height:130px;">
+          <div class="blob" style="width:220px;height:220px;top:-50px;left:-30px;background:rgba(120,80,220,0.28);animation-duration:7s;"></div>
+          <div class="blob" style="width:180px;height:180px;top:20px;right:-20px;background:rgba(80,60,180,0.22);animation-duration:9s;animation-delay:-3s;"></div>
+          <div class="blob" style="width:140px;height:140px;bottom:-30px;left:40%;background:rgba(160,100,240,0.18);animation-duration:8s;animation-delay:-1.5s;"></div>
+          <span class="label-overlay" style="color:#a78bfa;">Dark: Purple/Indigo</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 style="margin:4px 0 2px;">Purple / Indigo</h3>
+        <p style="margin:0;font-size:13px;">Cool, cosmic, techy feel</p>
+      </div>
+    </div>
+
+    <!-- Dark Option 2: Deep teal/cyan -->
+    <div class="card" data-choice="teal" onclick="toggleSelect(this)" style="margin:0;">
+      <div class="card-image" style="padding:8px 8px 0;">
+        <div class="scene" style="background:#0a1a18;height:130px;">
+          <div class="blob" style="width:220px;height:220px;top:-50px;left:-30px;background:rgba(20,180,160,0.25);animation-duration:7s;"></div>
+          <div class="blob" style="width:180px;height:180px;top:20px;right:-20px;background:rgba(10,140,130,0.2);animation-duration:9s;animation-delay:-3s;"></div>
+          <div class="blob" style="width:140px;height:140px;bottom:-30px;left:40%;background:rgba(40,200,180,0.15);animation-duration:8s;animation-delay:-1.5s;"></div>
+          <span class="label-overlay" style="color:#5eead4;">Dark: Teal/Cyan</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 style="margin:4px 0 2px;">Teal / Cyan</h3>
+        <p style="margin:0;font-size:13px;">Fresh, modern, dev-blog energy</p>
+      </div>
+    </div>
+
+    <!-- Dark Option 3: Keep warm amber (same palette) -->
+    <div class="card" data-choice="amber" onclick="toggleSelect(this)" style="margin:0;">
+      <div class="card-image" style="padding:8px 8px 0;">
+        <div class="scene" style="background:#111827;height:130px;">
+          <div class="blob" style="width:220px;height:220px;top:-50px;left:-30px;background:rgba(224,123,57,0.18);animation-duration:7s;"></div>
+          <div class="blob" style="width:180px;height:180px;top:20px;right:-20px;background:rgba(196,168,130,0.14);animation-duration:9s;animation-delay:-3s;"></div>
+          <div class="blob" style="width:140px;height:140px;bottom:-30px;left:40%;background:rgba(212,135,90,0.12);animation-duration:8s;animation-delay:-1.5s;"></div>
+          <span class="label-overlay" style="color:#e8a96b;">Dark: Warm Amber (same)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 style="margin:4px 0 2px;">Warm Amber (consistent)</h3>
+        <p style="margin:0;font-size:13px;">Same cozy palette in both modes</p>
+      </div>
+    </div>
+
+  </div>
+</div>

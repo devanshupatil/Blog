@@ -1,0 +1,200 @@
+<h2>Dark mode — navbar & card options</h2>
+<p class="subtitle">Background is #0d0d0d. Pick a navbar + card style combination that looks best.</p>
+
+<style>
+.preview {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: #0d0d0d;
+  position: relative;
+  min-height: 280px;
+}
+/* grid bg */
+.preview::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+.p-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; height: 48px; position: relative; z-index: 2;
+}
+.p-nav-logo { font-size: 13px; font-weight: 700; }
+.p-nav-links { display: flex; gap: 14px; font-size: 11px; opacity: 0.7; }
+.p-cards {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px; padding: 12px 12px 14px; position: relative; z-index: 2;
+}
+.p-card { border-radius: 8px; padding: 12px; position: relative; overflow: hidden; }
+.p-card-img { height: 50px; border-radius: 5px; margin-bottom: 8px; }
+.p-card-title { font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+.p-card-meta { font-size: 9px; opacity: 0.45; margin-bottom: 6px; }
+.p-card-tag { display:inline-block; font-size: 8px; font-weight: 600; padding: 2px 6px; border-radius: 999px; }
+.p-card-bar { height: 4px; border-radius: 2px; margin-bottom: 3px; opacity: 0.2; }
+</style>
+
+<div class="cards">
+
+  <!-- Option A: Pure black nav + black cards, amber accent borders -->
+  <div class="card" data-choice="amber-accent" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="preview">
+        <div class="p-nav" style="background:#000000; border-bottom: 1px solid rgba(224,123,57,0.25);">
+          <span class="p-nav-logo" style="color:#e8a96b;">Devanshu Patil</span>
+          <span class="p-nav-links" style="color:#f1f5f9;">Frontend · Backend · Cloud · AI</span>
+        </div>
+        <div class="p-cards">
+          <div class="p-card" style="background:#0a0a0a; border:1px solid rgba(224,123,57,0.20);">
+            <div class="p-card-img" style="background:linear-gradient(135deg,#1a1a1a,#222);"></div>
+            <div class="p-card-title" style="color:#f1f5f9;">Modern CSS Tips</div>
+            <div class="p-card-meta">May 2025 · 7 min</div>
+            <div class="p-card-bar" style="background:#e07b39;width:85%;"></div>
+            <span class="p-card-tag" style="background:rgba(224,123,57,0.15);color:#e8a96b;">Frontend</span>
+          </div>
+          <div class="p-card" style="background:#0a0a0a; border:1px solid rgba(224,123,57,0.20);">
+            <div class="p-card-img" style="background:linear-gradient(135deg,#1a1a1a,#222);"></div>
+            <div class="p-card-title" style="color:#f1f5f9;">Deploy to AWS Lambda</div>
+            <div class="p-card-meta">May 2025 · 6 min</div>
+            <div class="p-card-bar" style="background:#e07b39;width:70%;"></div>
+            <span class="p-card-tag" style="background:rgba(224,123,57,0.15);color:#e8a96b;">Cloud</span>
+          </div>
+          <div class="p-card" style="background:#0a0a0a; border:1px solid rgba(224,123,57,0.20);">
+            <div class="p-card-img" style="background:linear-gradient(135deg,#1a1a1a,#222);"></div>
+            <div class="p-card-title" style="color:#f1f5f9;">Golang Unit Testing</div>
+            <div class="p-card-meta">Apr 2025 · 8 min</div>
+            <div class="p-card-bar" style="background:#e07b39;width:60%;"></div>
+            <span class="p-card-tag" style="background:rgba(224,123,57,0.15);color:#e8a96b;">Backend</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Black + Amber borders</h3>
+      <p>Pure black navbar, cards with warm amber border. Brand-consistent with light mode accent colour.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Frosted glass nav + elevated cards -->
+  <div class="card" data-choice="frosted-glass" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="preview">
+        <div class="p-nav" style="background:rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(12px);">
+          <span class="p-nav-logo" style="color:#fff;">Devanshu Patil</span>
+          <span class="p-nav-links" style="color:#e2e8f0;">Frontend · Backend · Cloud · AI</span>
+        </div>
+        <div class="p-cards">
+          <div class="p-card" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10);">
+            <div class="p-card-img" style="background:rgba(255,255,255,0.08);"></div>
+            <div class="p-card-title" style="color:#fff;">Modern CSS Tips</div>
+            <div class="p-card-meta" style="color:#94a3b8;">May 2025 · 7 min</div>
+            <div class="p-card-bar" style="background:#fff;width:85%;"></div>
+            <span class="p-card-tag" style="background:rgba(255,255,255,0.10);color:rgba(255,255,255,0.6);">Frontend</span>
+          </div>
+          <div class="p-card" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10);">
+            <div class="p-card-img" style="background:rgba(255,255,255,0.08);"></div>
+            <div class="p-card-title" style="color:#fff;">Deploy to AWS Lambda</div>
+            <div class="p-card-meta" style="color:#94a3b8;">May 2025 · 6 min</div>
+            <div class="p-card-bar" style="background:#fff;width:70%;"></div>
+            <span class="p-card-tag" style="background:rgba(255,255,255,0.10);color:rgba(255,255,255,0.6);">Cloud</span>
+          </div>
+          <div class="p-card" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10);">
+            <div class="p-card-img" style="background:rgba(255,255,255,0.08);"></div>
+            <div class="p-card-title" style="color:#fff;">Golang Unit Testing</div>
+            <div class="p-card-meta" style="color:#94a3b8;">Apr 2025 · 8 min</div>
+            <div class="p-card-bar" style="background:#fff;width:60%;"></div>
+            <span class="p-card-tag" style="background:rgba(255,255,255,0.10);color:rgba(255,255,255,0.6);">Backend</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Frosted Glass</h3>
+      <p>Semi-transparent navbar + glass cards. Modern, Apple-inspired. Animation shows through everything.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Slightly elevated surfaces (zinc) -->
+  <div class="card" data-choice="zinc-elevated" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="preview">
+        <div class="p-nav" style="background:#141414; border-bottom:1px solid #222;">
+          <span class="p-nav-logo" style="color:#f1f5f9;">Devanshu Patil</span>
+          <span class="p-nav-links" style="color:#94a3b8;">Frontend · Backend · Cloud · AI</span>
+        </div>
+        <div class="p-cards">
+          <div class="p-card" style="background:#161616; border:1px solid #222;">
+            <div class="p-card-img" style="background:#1f1f1f;"></div>
+            <div class="p-card-title" style="color:#f1f5f9;">Modern CSS Tips</div>
+            <div class="p-card-meta" style="color:#64748b;">May 2025 · 7 min</div>
+            <div class="p-card-bar" style="background:#e07b39;width:85%;"></div>
+            <span class="p-card-tag" style="background:#1f1f1f;color:#94a3b8;">Frontend</span>
+          </div>
+          <div class="p-card" style="background:#161616; border:1px solid #222;">
+            <div class="p-card-img" style="background:#1f1f1f;"></div>
+            <div class="p-card-title" style="color:#f1f5f9;">Deploy to AWS Lambda</div>
+            <div class="p-card-meta" style="color:#64748b;">May 2025 · 6 min</div>
+            <div class="p-card-bar" style="background:#e07b39;width:70%;"></div>
+            <span class="p-card-tag" style="background:#1f1f1f;color:#94a3b8;">Cloud</span>
+          </div>
+          <div class="p-card" style="background:#161616; border:1px solid #222;">
+            <div class="p-card-img" style="background:#1f1f1f;"></div>
+            <div class="p-card-title" style="color:#f1f5f9;">Golang Unit Testing</div>
+            <div class="p-card-meta" style="color:#64748b;">Apr 2025 · 8 min</div>
+            <div class="p-card-bar" style="background:#e07b39;width:60%;"></div>
+            <span class="p-card-tag" style="background:#1f1f1f;color:#94a3b8;">Backend</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Slightly Elevated</h3>
+      <p>Navbar #141414, cards #161616 — subtle lift from the #0d0d0d bg. Clean, minimal, GitHub-dark feel.</p>
+    </div>
+  </div>
+
+  <!-- Option D: Transparent nav + amber glow cards -->
+  <div class="card" data-choice="transparent-glow" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="preview">
+        <div class="p-nav" style="background:transparent; border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span class="p-nav-logo" style="color:#e8a96b;">Devanshu Patil</span>
+          <span class="p-nav-links" style="color:#94a3b8;">Frontend · Backend · Cloud · AI</span>
+        </div>
+        <div class="p-cards">
+          <div class="p-card" style="background:rgba(224,123,57,0.06); border:1px solid rgba(224,123,57,0.15); box-shadow:0 0 20px rgba(224,123,57,0.06);">
+            <div class="p-card-img" style="background:rgba(224,123,57,0.10);"></div>
+            <div class="p-card-title" style="color:#f1f5f9;">Modern CSS Tips</div>
+            <div class="p-card-meta" style="color:#94a3b8;">May 2025 · 7 min</div>
+            <div class="p-card-bar" style="background:#e07b39;width:85%;"></div>
+            <span class="p-card-tag" style="background:rgba(224,123,57,0.15);color:#e8a96b;">Frontend</span>
+          </div>
+          <div class="p-card" style="background:rgba(224,123,57,0.06); border:1px solid rgba(224,123,57,0.15); box-shadow:0 0 20px rgba(224,123,57,0.06);">
+            <div class="p-card-img" style="background:rgba(224,123,57,0.10);"></div>
+            <div class="p-card-title" style="color:#f1f5f9;">Deploy to AWS Lambda</div>
+            <div class="p-card-meta" style="color:#94a3b8;">May 2025 · 6 min</div>
+            <div class="p-card-bar" style="background:#e07b39;width:70%;"></div>
+            <span class="p-card-tag" style="background:rgba(224,123,57,0.15);color:#e8a96b;">Cloud</span>
+          </div>
+          <div class="p-card" style="background:rgba(224,123,57,0.06); border:1px solid rgba(224,123,57,0.15); box-shadow:0 0 20px rgba(224,123,57,0.06);">
+            <div class="p-card-img" style="background:rgba(224,123,57,0.10);"></div>
+            <div class="p-card-title" style="color:#f1f5f9;">Golang Unit Testing</div>
+            <div class="p-card-meta" style="color:#94a3b8;">Apr 2025 · 8 min</div>
+            <div class="p-card-bar" style="background:#e07b39;width:60%;"></div>
+            <span class="p-card-tag" style="background:rgba(224,123,57,0.15);color:#e8a96b;">Backend</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>D — Transparent nav + Amber glow cards</h3>
+      <p>Fully transparent navbar, cards with warm amber tint + glow. Grid pulse shows through everything. Most cohesive with the animation.</p>
+    </div>
+  </div>
+
+</div>

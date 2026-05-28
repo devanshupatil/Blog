@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>More Animation Styles</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, sans-serif; background: #1a1a2e; color: #eee; padding: 24px; }
+  h2 { font-size: 1.4rem; margin-bottom: 6px; color: #fff; }
+  .subtitle { color: #aaa; margin-bottom: 24px; font-size: 0.95rem; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .card {
+    border: 2px solid #333; border-radius: 12px; overflow: hidden;
+    cursor: pointer; transition: border-color 0.2s, transform 0.2s; background: #111;
+  }
+  .card:hover { border-color: #e07b39; transform: translateY(-2px); }
+  .card.selected { border-color: #e07b39; box-shadow: 0 0 0 3px rgba(224,123,57,0.3); }
+  .preview { height: 180px; position: relative; overflow: hidden; }
+  .card-body { padding: 14px 16px; border-top: 1px solid #222; }
+  .card-body h3 { font-size: 1rem; color: #fff; margin-bottom: 4px; }
+  .card-body p { font-size: 0.82rem; color: #999; }
+
+  /* content placeholder overlay */
+  .content-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    gap: 8px; padding: 16px; pointer-events: none;
+  }
+  .line { background: rgba(45,31,15,0.13); border-radius: 4px; }
+
+  /* ---- E: Constellation / Star Network ---- */
+  .preview-e { background: #fdf6ee; }
+
+  /* ---- F: Bokeh Lights ---- */
+  .preview-f { background: #fdf6ee; }
+  .bokeh {
+    position: absolute; border-radius: 50%;
+    animation: bokehFloat ease-in-out infinite alternate;
+  }
+  @keyframes bokehFloat {
+    0% { transform: translate(0,0) scale(1); }
+    100% { transform: translate(var(--dx), var(--dy)) scale(var(--ds)); }
+  }
+
+  /* ---- G: Animated Grain / Noise ---- */
+  .preview-g { background: #fdf6ee; }
+  .grain-canvas { position: absolute; inset: 0; opacity: 0.55; }
+
+  /* ---- H: Diagonal Light Rays ---- */
+  .preview-h { background: #fdf6ee; overflow: hidden; }
+  .ray {
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(224,123,57,0.18), transparent);
+    transform-origin: top center;
+    transform: rotate(-35deg);
+    animation: raySlide linear infinite;
+    top: -100px; bottom: -100px;
+  }
+  @keyframes raySlide {
+    0% { transform: rotate(-35deg) translateX(-60px); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: rotate(-35deg) translateX(60px); opacity: 0; }
+  }
+
+  /* ---- I: Fireflies ---- */
+  .preview-i { background: #fdf6ee; }
+  .firefly {
+    position: absolute; border-radius: 50%;
+    background: rgba(224,123,57,0.8);
+    box-shadow: 0 0 6px 2px rgba(224,123,57,0.4);
+    animation: fireflyDrift ease-in-out infinite, fireflyGlow ease-in-out infinite alternate;
+  }
+  @keyframes fireflyDrift {
+    0%   { transform: translate(0,0); }
+    25%  { transform: translate(var(--x1), var(--y1)); }
+    50%  { transform: translate(var(--x2), var(--y2)); }
+    75%  { transform: translate(var(--x3), var(--y3)); }
+    100% { transform: translate(0,0); }
+  }
+  @keyframes fireflyGlow {
+    0%   { opacity: 0.1; }
+    100% { opacity: 0.7; }
+  }
+
+  /* ---- J: Typing / Cursor Blink Grid ---- */
+  .preview-j { background: #fdf6ee; }
+  .cursor-line {
+    position: absolute; display: flex; align-items: center; gap: 4px;
+  }
+  .cursor-block {
+    width: 8px; height: 14px;
+    background: rgba(224,123,57,0.5);
+    animation: cursorBlink 1.2s step-start infinite;
+  }
+  .cursor-text {
+    height: 10px; background: rgba(45,31,15,0.1); border-radius: 2px;
+    animation: typeGrow 3s ease forwards;
+    width: 0;
+  }
+  @keyframes cursorBlink { 50% { opacity: 0; } }
+  @keyframes typeGrow { to { width: var(--tw); } }
+
+  .selected-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #e07b39; color: #fff;
+    text-align: center; padding: 12px;
+    font-size: 0.9rem; font-weight: 600; display: none;
+  }
+  .selected-bar.visible { display: block; }
+</style>
+</head>
+<body>
+
+<h2>More animation styles — pick your favourite</h2>
+<p class="subtitle">Still using your cream blog palette. Scroll down for all 6 new options.</p>
+
+<div class="cards">
+
+  <!-- E: Constellation -->
+  <div class="card" id="card-e" onclick="selectCard('e','Constellation Network')">
+    <div class="preview preview-e">
+      <canvas id="canvas-e" width="360" height="180" style="position:absolute;inset:0;"></canvas>
+      <div class="content-overlay">
+        <div class="line" style="width:70%;height:14px;"></div>
+        <div class="line" style="width:50%;height:10px;"></div>
+        <div class="line" style="width:40%;height:10px;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>E — Constellation Network</h3>
+      <p>Dots connected by thin lines — slowly drift and reconnect. Smart, editorial feel.</p>
+    </div>
+  </div>
+
+  <!-- F: Bokeh -->
+  <div class="card" id="card-f" onclick="selectCard('f','Bokeh Lights')">
+    <div class="preview preview-f">
+      <!-- bokeh blobs injected by script -->
+      <div class="content-overlay">
+        <div class="line" style="width:70%;height:14px;"></div>
+        <div class="line" style="width:50%;height:10px;"></div>
+        <div class="line" style="width:40%;height:10px;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>F — Bokeh Lights</h3>
+      <p>Soft glowing circles floating like out-of-focus lights. Warm, photographic, premium feel.</p>
+    </div>
+  </div>
+
+  <!-- G: Grain Noise -->
+  <div class="card" id="card-g" onclick="selectCard('g','Animated Film Grain')">
+    <div class="preview preview-g">
+      <canvas id="canvas-g" class="grain-canvas"></canvas>
+      <div class="content-overlay">
+        <div class="line" style="width:70%;height:14px;"></div>
+        <div class="line" style="width:50%;height:10px;"></div>
+        <div class="line" style="width:40%;height:10px;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>G — Animated Film Grain</h3>
+      <p>Subtle paper texture that shifts each frame. Tactile, magazine/editorial aesthetic.</p>
+    </div>
+  </div>
+
+  <!-- H: Light Rays -->
+  <div class="card" id="card-h" onclick="selectCard('h','Diagonal Light Rays')">
+    <div class="preview preview-h" id="prev-h">
+      <!-- rays injected -->
+      <div class="content-overlay">
+        <div class="line" style="width:70%;height:14px;"></div>
+        <div class="line" style="width:50%;height:10px;"></div>
+        <div class="line" style="width:40%;height:10px;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>H — Diagonal Light Rays</h3>
+      <p>Soft sunlight rays sweeping across. Warm, optimistic, morning-paper aesthetic.</p>
+    </div>
+  </div>
+
+  <!-- I: Fireflies -->
+  <div class="card" id="card-i" onclick="selectCard('i','Fireflies')">
+    <div class="preview preview-i" id="prev-i">
+      <!-- fireflies injected -->
+      <div class="content-overlay">
+        <div class="line" style="width:70%;height:14px;"></div>
+        <div class="line" style="width:50%;height:10px;"></div>
+        <div class="line" style="width:40%;height:10px;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>I — Fireflies</h3>
+      <p>Tiny glowing dots that drift and pulse. Magical, night-garden vibe — very personal blog.</p>
+    </div>
+  </div>
+
+  <!-- J: Typewriter cursor lines -->
+  <div class="card" id="card-j" onclick="selectCard('j','Typewriter Lines')">
+    <div class="preview preview-j" id="prev-j">
+      <!-- cursor lines injected -->
+      <div class="content-overlay">
+        <div class="line" style="width:70%;height:14px;"></div>
+        <div class="line" style="width:50%;height:10px;"></div>
+        <div class="line" style="width:40%;height:10px;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>J — Typewriter Lines</h3>
+      <p>Ghost text lines appearing with blinking cursors. Meta, writer-coded, cleverly on-brand.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="selected-bar" id="selected-bar">✓ Selected: <span id="selected-label"></span> — type your response in the terminal</div>
+
+<script>
+// ---- E: Constellation canvas ----
+(function() {
+  const c = document.getElementById('canvas-e');
+  const ctx = c.getContext('2d');
+  const dots = Array.from({length: 18}, () => ({
+    x: Math.random() * 360, y: Math.random() * 180,
+    vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4
+  }));
+  function drawConst() {
+    ctx.clearRect(0,0,360,180);
+    dots.forEach(d => {
+      d.x += d.vx; d.y += d.vy;
+      if (d.x < 0 || d.x > 360) d.vx *= -1;
+      if (d.y < 0 || d.y > 180) d.vy *= -1;
+    });
+    for (let i = 0; i < dots.length; i++) {
+      for (let j = i+1; j < dots.length; j++) {
+        const dx = dots[i].x - dots[j].x, dy = dots[i].y - dots[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 80) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(224,123,57,${0.18 * (1 - dist/80)})`;
+          ctx.lineWidth = 0.8;
+          ctx.moveTo(dots[i].x, dots[i].y);
+          ctx.lineTo(dots[j].x, dots[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    dots.forEach(d => {
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, 2, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(224,123,57,0.5)';
+      ctx.fill();
+    });
+    requestAnimationFrame(drawConst);
+  }
+  drawConst();
+})();
+
+// ---- F: Bokeh lights ----
+(function() {
+  const container = document.querySelector('.preview-f');
+  const colors = ['rgba(224,123,57,VAL)','rgba(196,168,130,VAL)','rgba(240,221,200,VAL)','rgba(224,180,100,VAL)'];
+  for (let i = 0; i < 8; i++) {
+    const b = document.createElement('div');
+    b.className = 'bokeh';
+    const size = 30 + Math.random() * 80;
+    const col = colors[i % colors.length].replace('VAL', (0.15 + Math.random() * 0.2).toFixed(2));
+    const dx = ((Math.random() - 0.5) * 30).toFixed(0) + 'px';
+    const dy = ((Math.random() - 0.5) * 20).toFixed(0) + 'px';
+    const ds = (0.9 + Math.random() * 0.3).toFixed(2);
+    b.style.cssText = `
+      width:${size}px;height:${size}px;
+      background:${col};
+      filter:blur(${size * 0.3}px);
+      top:${Math.random()*100}%;left:${Math.random()*100}%;
+      --dx:${dx};--dy:${dy};--ds:${ds};
+      animation-duration:${5 + Math.random()*6}s;
+      animation-delay:-${Math.random()*8}s;
+    `;
+    container.insertBefore(b, container.firstChild);
+  }
+})();
+
+// ---- G: Film grain canvas ----
+(function() {
+  const c = document.getElementById('canvas-g');
+  const ctx = c.getContext('2d');
+  c.width = c.offsetWidth || 360;
+  c.height = c.offsetHeight || 180;
+  function drawGrain() {
+    const img = ctx.createImageData(c.width, c.height);
+    for (let i = 0; i < img.data.length; i += 4) {
+      const v = Math.random() * 60;
+      img.data[i] = 80 + v; img.data[i+1] = 50 + v; img.data[i+2] = 20 + v;
+      img.data[i+3] = Math.random() * 35;
+    }
+    ctx.putImageData(img, 0, 0);
+    requestAnimationFrame(drawGrain);
+  }
+  drawGrain();
+})();
+
+// ---- H: Light rays ----
+(function() {
+  const container = document.getElementById('prev-h');
+  for (let i = 0; i < 6; i++) {
+    const r = document.createElement('div');
+    r.className = 'ray';
+    const w = 20 + Math.random() * 60;
+    r.style.cssText = `
+      width:${w}px;
+      left:${10 + i * 14}%;
+      animation-duration:${5 + Math.random()*5}s;
+      animation-delay:-${Math.random()*8}s;
+      opacity:${0.5 + Math.random()*0.5};
+    `;
+    container.insertBefore(r, container.firstChild);
+  }
+})();
+
+// ---- I: Fireflies ----
+(function() {
+  const container = document.getElementById('prev-i');
+  for (let i = 0; i < 10; i++) {
+    const f = document.createElement('div');
+    f.className = 'firefly';
+    const size = 3 + Math.random() * 4;
+    const rnd = () => ((Math.random() - 0.5) * 60).toFixed(0) + 'px';
+    f.style.cssText = `
+      width:${size}px;height:${size}px;
+      top:${10 + Math.random()*80}%;
+      left:${10 + Math.random()*80}%;
+      --x1:${rnd()};--y1:${rnd()};
+      --x2:${rnd()};--y2:${rnd()};
+      --x3:${rnd()};--y3:${rnd()};
+      animation-duration:${8+Math.random()*6}s,${1.5+Math.random()*2}s;
+      animation-delay:-${Math.random()*10}s,-${Math.random()*3}s;
+    `;
+    container.insertBefore(f, container.firstChild);
+  }
+})();
+
+// ---- J: Typewriter cursor lines ----
+(function() {
+  const container = document.getElementById('prev-j');
+  const widths = [90, 130, 70, 110, 60, 80];
+  const tops = [30, 55, 80, 105, 130, 150];
+  widths.forEach((w, i) => {
+    const line = document.createElement('div');
+    line.className = 'cursor-line';
+    const delay = i * 0.6;
+    line.style.cssText = `top:${tops[i]}px;left:20px;animation-delay:${delay}s;`;
+    line.innerHTML = `
+      <div class="cursor-text" style="--tw:${w}px;animation-delay:${delay}s;"></div>
+      <div class="cursor-block" style="animation-delay:${delay}s;"></div>
+    `;
+    container.insertBefore(line, container.firstChild);
+  });
+})();
+
+// ---- Selection ----
+function selectCard(id, label) {
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('card-' + id).classList.add('selected');
+  document.getElementById('selected-label').textContent = label;
+  document.getElementById('selected-bar').classList.add('visible');
+  try {
+    fetch('/__select', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({type:'click', choice: id, text: label, timestamp: Date.now()})
+    }).catch(()=>{});
+  } catch(e) {}
+}
+</script>
+</body>
+</html>

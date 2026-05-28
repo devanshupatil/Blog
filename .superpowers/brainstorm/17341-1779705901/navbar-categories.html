@@ -1,0 +1,66 @@
+<h2>How should the navbar categories feel?</h2>
+<p class="subtitle">Each option keeps Frontend, Backend, Cloud, AI — the difference is how they're styled and how the active state works.</p>
+
+<div class="cards">
+
+  <!-- Option A: Plain text + underline active -->
+  <div class="card" data-choice="underline" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fdf6ee; padding:16px; font-family:'Inter',sans-serif;">
+      <div style="background:#fff; border-radius:8px; padding:12px 16px; border-bottom:2px solid #f0ddc8; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-weight:700; font-size:13px; color:#2d1f0f; font-family:'Georgia',serif;">Devanshu Patil</span>
+        <div style="display:flex; gap:20px; font-size:11px; font-weight:500;">
+          <span style="color:#7c5c3e; padding-bottom:2px; border-bottom:2px solid transparent;">Frontend</span>
+          <span style="color:#7c5c3e; padding-bottom:2px; border-bottom:2px solid transparent;">Backend</span>
+          <span style="color:#7c5c3e; padding-bottom:2px; border-bottom:2px solid transparent;">Cloud</span>
+          <span style="color:#e07b39; padding-bottom:2px; border-bottom:2px solid #e07b39; font-weight:600;">AI</span>
+        </div>
+      </div>
+      <div style="padding:10px 16px 0; font-size:9px; color:#aaa; text-align:center;">Active category gets warm orange underline</div>
+    </div>
+    <div class="card-body">
+      <h3>A — Text + Active Underline</h3>
+      <p>Simple and editorial. Active category gets an orange underline. Clean, no clutter.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Pill tags with per-category color -->
+  <div class="card" data-choice="colored-pills" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fdf6ee; padding:16px; font-family:'Inter',sans-serif;">
+      <div style="background:#fff; border-radius:8px; padding:12px 16px; border-bottom:2px solid #f0ddc8; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-weight:700; font-size:13px; color:#2d1f0f; font-family:'Georgia',serif;">Devanshu Patil</span>
+        <div style="display:flex; gap:8px; font-size:10px; font-weight:600;">
+          <span style="background:#dbeafe; color:#1d4ed8; padding:3px 10px; border-radius:20px;">Frontend</span>
+          <span style="background:#dcfce7; color:#166534; padding:3px 10px; border-radius:20px;">Backend</span>
+          <span style="background:#e0f2fe; color:#0369a1; padding:3px 10px; border-radius:20px;">Cloud</span>
+          <span style="background:#fef3c7; color:#b45309; padding:3px 10px; border-radius:20px; border:2px solid #f59e0b;">AI ✦</span>
+        </div>
+      </div>
+      <div style="padding:10px 16px 0; font-size:9px; color:#aaa; text-align:center;">Each category has its own pill color</div>
+    </div>
+    <div class="card-body">
+      <h3>B — Colored Category Pills</h3>
+      <p>Each category gets its own color identity. Playful and instantly recognizable across the site.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Icon + text with warm accent -->
+  <div class="card" data-choice="icon-text" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fdf6ee; padding:16px; font-family:'Inter',sans-serif;">
+      <div style="background:#fff; border-radius:8px; padding:12px 16px; border-bottom:2px solid #f0ddc8; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-weight:700; font-size:13px; color:#2d1f0f; font-family:'Georgia',serif;">Devanshu Patil</span>
+        <div style="display:flex; gap:16px; font-size:11px; font-weight:500; color:#7c5c3e;">
+          <span>🖥 Frontend</span>
+          <span>⚙️ Backend</span>
+          <span>☁️ Cloud</span>
+          <span style="color:#e07b39; font-weight:700; background:#fff7ed; padding:3px 8px; border-radius:6px; border:1px solid #fed7aa;">✦ AI</span>
+        </div>
+      </div>
+      <div style="padding:10px 16px 0; font-size:9px; color:#aaa; text-align:center;">Small icons beside each label, AI has warm highlight</div>
+    </div>
+    <div class="card-body">
+      <h3>C — Icons + Text, AI Highlighted</h3>
+      <p>Small emoji/icon per category adds character. AI gets a warm badge to stand out as a featured topic.</p>
+    </div>
+  </div>
+
+</div>
