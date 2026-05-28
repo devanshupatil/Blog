@@ -4,7 +4,7 @@ description: What large language models actually are, how they work under the ho
 category: AI
 published: true
 createdAt: 2026-05-01T09:00:00.000Z
-image: /assets/placeholder.webp
+image: /assets/llm_cover.png
 author: Devanshu Patil
 authorTitle: Software Developer
 readingTime: 6 min read
