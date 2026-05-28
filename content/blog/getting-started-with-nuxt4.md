@@ -4,7 +4,7 @@ description: A practical beginner's guide to setting up a Nuxt 4 project from sc
 category: Frontend
 published: true
 createdAt: 2025-05-20T09:00:00.000Z
-image: /assets/blogging.webp
+image: /assets/nuxt4_cover.png
 author: Devanshu Patil
 authorTitle: Software Developer
 readingTime: 6 min read
