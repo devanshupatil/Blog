@@ -39,13 +39,19 @@ const NAV_LINKS = [
   { label: 'AI', to: '/blog/ai' },
 ]
 
+const INFO_LINKS = [
+  { label: 'About Us', to: '/about' },
+  { label: 'Contact', to: '/contact' },
+  { label: 'Privacy Policy', to: '/privacy' },
+]
+
 export function Footer() {
   return (
     <footer className="border-t border-cream-border dark:border-[#1e1e1e] mt-16">
       <div className="max-w-5xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           {/* Brand */}
-          <div>
+          <div className="sm:col-span-2 md:col-span-1">
             <Link
               to="/"
               className="font-serif text-lg font-bold text-editorial-text dark:text-gray-100 mb-2 block"
@@ -64,6 +70,25 @@ export function Footer() {
             </h3>
             <ul className="space-y-2">
               {NAV_LINKS.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="text-sm text-editorial-muted hover:text-editorial-accent transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Info Section (About, Contact, Privacy) */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-editorial-subtle dark:text-gray-500 mb-4">
+              Info
+            </h3>
+            <ul className="space-y-2">
+              {INFO_LINKS.map((link) => (
                 <li key={link.to}>
                   <Link
                     to={link.to}
@@ -107,3 +132,4 @@ export function Footer() {
     </footer>
   )
 }
+

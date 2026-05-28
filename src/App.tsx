@@ -5,6 +5,9 @@ import { Home } from './pages/Home'
 import { BlogIndex } from './pages/BlogIndex'
 import { CategoryPage } from './pages/CategoryPage'
 import { PostPage } from './pages/PostPage'
+import { About } from './pages/About'
+import { Contact } from './pages/Contact'
+import { Privacy } from './pages/Privacy'
 import { NotFound } from './pages/NotFound'
 import { AnimatedBackground } from './components/AnimatedBackground'
 
@@ -21,6 +24,9 @@ export function App() {
               <Route path="/blog" element={<BlogIndex />} />
               <Route path="/blog/posts/:slug" element={<PostPage />} />
               <Route path="/blog/:category" element={<CategoryPage />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy" element={<Privacy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
