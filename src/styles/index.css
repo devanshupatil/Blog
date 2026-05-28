@@ -10,12 +10,36 @@
     background-color: #0d0d0d;
   }
 
+  /* ── Light Mode Code & Pre legibility improvements ── */
+  .prose pre {
+    background-color: #f7eeda !important;
+    border: 1px solid #ebdbbe !important;
+    color: #2d1f0f !important;
+  }
+  .prose pre code {
+    color: #2d1f0f !important;
+    background-color: transparent !important;
+  }
+  .prose :not(pre) > code {
+    background-color: #f5ebd5 !important;
+    color: #e07b39 !important;
+    border-radius: 4px;
+    padding: 0.15em 0.3em;
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+  /* Ensure default highlight.js plain text is dark brown */
+  .hljs {
+    color: #2d1f0f !important;
+    background: transparent !important;
+  }
+
   /* ── Syntax highlighting: swap hljs theme for dark mode ── */
   /* Light: github theme is already imported via main.tsx */
   /* Dark: override with github-dark palette tokens */
   html.dark .hljs {
-    background: #161b22;
-    color: #c9d1d9;
+    background: #161b22 !important;
+    color: #c9d1d9 !important;
   }
   html.dark .hljs-comment,
   html.dark .hljs-meta { color: #8b949e; }
@@ -41,12 +65,17 @@
   /* Dark mode prose code blocks */
   html.dark .prose pre {
     background-color: #161b22 !important;
-    border: 1px solid #30363d;
+    border: 1px solid #30363d !important;
+    color: #c9d1d9 !important;
   }
-  html.dark .prose code {
-    background-color: #1f2428;
-    color: #e6edf3;
+  html.dark .prose pre code {
+    color: #c9d1d9 !important;
+  }
+  html.dark .prose :not(pre) > code {
+    background-color: #1f2428 !important;
+    color: #e6edf3 !important;
     border-radius: 3px;
     padding: 0.1em 0.3em;
   }
 }
+
