@@ -71,6 +71,11 @@ export default {
               'border-radius': '3px',
               'padding': '0.1em 0.3em',
             },
+            blockquote: {
+              'background-color': '#1a1210',
+              'color': '#d4b896',
+              'border-left-color': '#e07b39',
+            },
           },
         },
       }),
