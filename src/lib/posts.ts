@@ -14,6 +14,8 @@ const sanitizeSchema = {
     code: [...(defaultSchema.attributes?.code ?? []), 'className'],
     span: [...(defaultSchema.attributes?.span ?? []), 'className'],
     pre:  [...(defaultSchema.attributes?.pre  ?? []), 'className'],
+    // Allow img tags with relative src paths (default schema only allows http/https)
+    img:  ['src', 'alt', 'title', 'width', 'height'],
   },
 }
 
