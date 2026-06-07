@@ -4,7 +4,7 @@ description: A growth story across 4 real-world builds — a PDF generator, an e
 category: Career
 published: true
 createdAt: 2026-06-07T09:00:00.000Z
-image: /assets/blogging.webp
+image: /assets/blog-cover-growth-story.svg
 author: Devanshu Patil
 authorTitle: Software Developer
 readingTime: 9 min read
