@@ -28,6 +28,8 @@ This is that story.
 
 The idea sounded simple. Users fill out a form, pick a template, download a PDF. How hard could it be?
 
+![Marriage Biodata Builder](/assets/marriage-biodata.png)
+
 Very hard, as it turns out.
 
 I built the frontend with React and Vite, styled with TailwindCSS, and wired up `jsPDF` and `html2canvas` to handle the PDF export. On screen, everything looked great. Clean layouts, proper fonts, nice spacing.
@@ -45,6 +47,8 @@ That shift in thinking — designing for output format, not just for the screen 
 ---
 
 ## Project 2 — Sagar-Shop: Full-Stack Is a Mindset Shift, Not Just More Code
+
+![Sagar Shop](/assets/shop-sagar.png)
 
 I'd built frontends before. I'd poked at backends. Sagar-Shop was the first time I had to make them work together at scale — and it exposed a gap in my thinking I didn't know was there.
 
@@ -64,6 +68,8 @@ After that, I started sketching data-flow diagrams before writing a single route
 
 ## Project 3 — TimeStream: Build for Yourself First
 
+![TimeStream](/assets/timestream.png)
+
 TimeStream started as a personal itch. I wanted to know how I was actually spending my dev time — not a rough guess, actual data. What sites I was visiting, what files I was touching, how long I spent in VS Code versus YouTube versus documentation.
 
 So I built it. An Electron desktop app paired with a browser extension, storing everything in a local SQLite database using `better-sqlite3`. No server, no cloud, no account. Just a dashboard that reflects your last 24 hours back at you.
@@ -81,6 +87,8 @@ What changed for me: I stopped treating "the browser" as the default deployment 
 ---
 
 ## Project 4 — Online Learning Portal: Complexity Compounds. Design Before You Code.
+
+![Online Learning Portal](/assets/online-learning-patfrom.png)
 
 This was the biggest project I'd attempted. A full learning management system: course management, attendance tracking, progress reports, interactive materials, built-in messaging — and a multi-LLM AI layer that could extract questions from scanned exam papers using GPT-4o, Claude, Gemini, or Perplexity as fallbacks.
 
