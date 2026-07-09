@@ -4,7 +4,7 @@ description: "Discover how Groq's LPU hardware delivers lightning-fast AI infere
 category: AI
 published: true
 createdAt: 2026-07-09T09:00:00.000Z
-image: /assets/groq-guide.webp
+image: /assets/groq-guide.png
 author: Devanshu Patil
 authorTitle: Software Developer
 readingTime: 8 min read
