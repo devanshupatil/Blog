@@ -1,14 +1,15 @@
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkRehype from 'remark-rehype'
+import rehypeRaw from 'rehype-raw'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize'
 import rehypeStringify from 'rehype-stringify'
 import type { PostMeta, Post } from '../types/post'
 
-// Allow syntax-highlighted code (rehype-highlight adds class attributes)
 const sanitizeSchema = {
   ...defaultSchema,
+  tagNames: [...(defaultSchema.tagNames ?? []), 'video', 'source'],
   attributes: {
     ...defaultSchema.attributes,
     code: [...(defaultSchema.attributes?.code ?? []), 'className'],
@@ -16,6 +17,9 @@ const sanitizeSchema = {
     pre:  [...(defaultSchema.attributes?.pre  ?? []), 'className'],
     // Allow img tags with relative src paths (default schema only allows http/https)
     img:  ['src', 'alt', 'title', 'width', 'height'],
+    video: ['src', 'controls', 'autoplay', 'loop', 'muted', 'playsinline', 'preload', 'width', 'height', 'className', 'class', 'poster', 'style'],
+    source: ['src', 'type'],
+    div: ['className', 'class', 'style'],
   },
 }
 
@@ -64,10 +68,11 @@ export async function getPost(slug: string): Promise<Post | null> {
   const { data, content } = matter(raw)
 
   const processed = await remark()
-    .use(remarkRehype)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
     .use(rehypeHighlight)
     .use(rehypeSanitize, sanitizeSchema)
-    .use(rehypeStringify)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content)
 
   return {
