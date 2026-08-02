@@ -36,14 +36,14 @@ export function CategoryPage() {
 
   if (!meta) {
     return (
-      <main className="max-w-5xl mx-auto px-4 py-12">
+      <main className="max-w-7xl mx-auto px-4 py-12">
         <p className="text-editorial-muted">Category not found.</p>
       </main>
     )
   }
 
   return (
-    <main className="max-w-5xl mx-auto px-4 py-12">
+    <main className="max-w-7xl mx-auto px-4 py-12">
       <h1 className="font-serif text-4xl font-bold text-editorial-text mb-2 dark:text-gray-100">
         {meta.label}
       </h1>
