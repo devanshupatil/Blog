@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0a07"/>
+      <stop offset="100%" style="stop-color:#1e1008"/>
+    </linearGradient>
+    <linearGradient id="card1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1510;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#2a1c0e;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e07b39;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#e07b39;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#e07b39;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="600" cy="0" rx="500" ry="200" fill="#e07b39" opacity="0.06" filter="url(#blur)"/>
+
+  <!-- Grid lines subtle -->
+  <g stroke="#ffffff" stroke-width="0.3" opacity="0.04">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Orange glow strip -->
+  <rect x="0" y="300" width="1200" height="40" fill="url(#glow)"/>
+
+  <!-- ── Architecture diagram ── -->
+
+  <!-- Host box (left) -->
+  <g transform="translate(60, 95)">
+    <rect width="220" height="150" rx="10" fill="url(#card1)" stroke="#e07b39" stroke-width="1" opacity="0.9"/>
+    <rect width="4" height="150" rx="2" fill="#e07b39"/>
+    <text x="20" y="30" font-family="Georgia, serif" font-size="11" fill="#e07b39" letter-spacing="2" opacity="0.8">HOST</text>
+    <text x="20" y="60" font-family="Georgia, serif" font-size="17" fill="#fdf6ee" font-weight="bold">Claude / your</text>
+    <text x="20" y="82" font-family="Georgia, serif" font-size="17" fill="#fdf6ee" font-weight="bold">AI app</text>
+    <text x="20" y="112" font-family="Inter, sans-serif" font-size="11" fill="#c4a882">One MCP client</text>
+    <text x="20" y="130" font-family="Inter, sans-serif" font-size="10" fill="#e07b39" opacity="0.7">talks to any server</text>
+  </g>
+
+  <!-- Line: Host -> Hub -->
+  <line x1="280" y1="170" x2="538" y2="170" stroke="#e07b39" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6"/>
+  <polygon points="538,165 550,170 538,175" fill="#e07b39" opacity="0.6"/>
+
+  <!-- MCP Hub (center) -->
+  <g transform="translate(600, 170)">
+    <circle r="66" fill="#2a1505" stroke="#e07b39" stroke-width="1.6"/>
+    <circle r="80" fill="none" stroke="#e07b39" stroke-width="0.6" opacity="0.35"/>
+    <text x="0" y="-4" font-family="Georgia, serif" font-size="24" fill="#fdf6ee" font-weight="bold" text-anchor="middle">MCP</text>
+    <text x="0" y="18" font-family="Inter, sans-serif" font-size="10" fill="#e07b39" text-anchor="middle" letter-spacing="1">PROTOCOL</text>
+  </g>
+
+  <!-- Lines: Hub -> Server cards -->
+  <g stroke="#e07b39" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6">
+    <line x1="662" y1="140" x2="938" y2="88"/>
+    <line x1="662" y1="162" x2="938" y2="132"/>
+    <line x1="662" y1="184" x2="938" y2="176"/>
+    <line x1="662" y1="206" x2="938" y2="220"/>
+  </g>
+  <g fill="#e07b39" opacity="0.6">
+    <polygon points="938,83 950,88 938,93"/>
+    <polygon points="938,127 950,132 938,137"/>
+    <polygon points="938,171 950,176 938,181"/>
+    <polygon points="938,215 950,220 938,225"/>
+  </g>
+
+  <!-- Server cards (right) -->
+  <g transform="translate(950, 70)">
+    <rect width="190" height="34" rx="8" fill="url(#card1)" stroke="#e07b39" stroke-width="1" opacity="0.9"/>
+    <text x="16" y="22" font-family="Inter, sans-serif" font-size="13" fill="#fdf6ee" font-weight="bold">GitHub server</text>
+  </g>
+  <g transform="translate(950, 114)">
+    <rect width="190" height="34" rx="8" fill="url(#card1)" stroke="#e07b39" stroke-width="1" opacity="0.9"/>
+    <text x="16" y="22" font-family="Inter, sans-serif" font-size="13" fill="#fdf6ee" font-weight="bold">Postgres server</text>
+  </g>
+  <g transform="translate(950, 158)">
+    <rect width="190" height="34" rx="8" fill="url(#card1)" stroke="#e07b39" stroke-width="1" opacity="0.9"/>
+    <text x="16" y="22" font-family="Inter, sans-serif" font-size="13" fill="#fdf6ee" font-weight="bold">Slack server</text>
+  </g>
+  <g transform="translate(950, 202)">
+    <rect width="190" height="34" rx="8" fill="url(#card1)" stroke="#e07b39" stroke-width="1" opacity="0.9"/>
+    <text x="16" y="22" font-family="Inter, sans-serif" font-size="13" fill="#fdf6ee" font-weight="bold">Filesystem server</text>
+  </g>
+
+  <!-- ── Title section ── -->
+  <line x1="60" y1="340" x2="1140" y2="340" stroke="#e07b39" stroke-width="0.5" opacity="0.2"/>
+
+  <text x="60" y="400" font-family="Georgia, serif" font-size="46" fill="#fdf6ee" font-weight="bold" letter-spacing="-0.5">What is <tspan fill="#e07b39">MCP?</tspan></text>
+  <text x="60" y="452" font-family="Georgia, serif" font-size="27" fill="#fdf6ee" font-weight="bold" letter-spacing="-0.3">The protocol fixing how AI connects to your tools</text>
+
+  <text x="60" y="500" font-family="Inter, sans-serif" font-size="17" fill="#c4a882" letter-spacing="0.3">One server, any AI host — turning an M × N integration problem into M + N.</text>
+
+  <!-- Author + blog URL -->
+  <circle cx="72" cy="556" r="16" fill="#2a1505" stroke="#e07b39" stroke-width="1"/>
+  <text x="72" y="561" font-family="Georgia, serif" font-size="12" fill="#e07b39" text-anchor="middle" font-weight="bold">D</text>
+  <text x="98" y="561" font-family="Inter, sans-serif" font-size="14" fill="#7c5c3e">Devanshu Patil  ·  blogbydevanshu.netlify.app</text>
+
+  <!-- Top-right tag -->
+  <rect x="1040" y="40" width="130" height="28" rx="14" fill="#e07b39" opacity="0.12" stroke="#e07b39" stroke-width="0.8"/>
+  <text x="1105" y="59" font-family="Inter, sans-serif" font-size="12" fill="#e07b39" text-anchor="middle" letter-spacing="1">PROTOCOL</text>
+</svg>
