@@ -24,7 +24,7 @@ export function Home() {
     .slice(0, 3)
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-12 md:py-16">
+    <main className="max-w-7xl mx-auto px-6 py-12 md:py-16">
       
       {/* ── Hero Section ── */}
       <section 
