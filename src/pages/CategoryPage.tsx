@@ -20,6 +20,10 @@ const CATEGORY_META: Record<string, { label: string; subtitle: string }> = {
     label: 'AI',
     subtitle: 'Machine learning, LLMs, and AI-powered tools',
   },
+  growth: {
+    label: 'Growth',
+    subtitle: 'Project journeys, real feedback, and lessons in building products people use',
+  },
 }
 
 export function CategoryPage() {
