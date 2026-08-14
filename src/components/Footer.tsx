@@ -37,6 +37,7 @@ const NAV_LINKS = [
   { label: 'Backend', to: '/blog/backend' },
   { label: 'Cloud', to: '/blog/cloud' },
   { label: 'AI', to: '/blog/ai' },
+  { label: 'Growth', to: '/blog/growth' },
 ]
 
 const INFO_LINKS = [
