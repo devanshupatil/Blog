@@ -3,7 +3,7 @@ import { getAllPosts } from '../lib/posts'
 import { useMeta } from '../hooks/useMeta'
 import { AnimatedBlogCard } from '../components/AnimatedBlogCard'
 
-const CATEGORIES = ['All', 'Frontend', 'Backend', 'Cloud', 'AI'] as const
+const CATEGORIES = ['All', 'Frontend', 'Backend', 'Cloud', 'AI', 'Growth'] as const
 type CategoryFilter = (typeof CATEGORIES)[number]
 
 export function BlogIndex() {
