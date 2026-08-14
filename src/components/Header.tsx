@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useDarkMode } from '../hooks/useDarkMode'
 import { SearchBar } from './SearchBar'
 
-const CATEGORIES = ['Frontend', 'Backend', 'Cloud', 'AI'] as const
+const CATEGORIES = ['Frontend', 'Backend', 'Cloud', 'AI', 'Growth'] as const
 
 // Blog layers logo — matches Sachin Ghait's style icon
 function BlogLogo() {
