@@ -1,9 +1,9 @@
 ---
-title: Modern CSS Tips Every Developer Should Know in 2025
+title: Modern CSS Tips Every Developer Should Know
 description: CSS has evolved massively. Here are the most impactful modern CSS features — container queries, cascade layers, :has(), and more — with real examples.
 category: Frontend
 published: true
-createdAt: 2025-05-22T09:00:00.000Z
+createdAt: 2026-05-28T15:00:00.000Z
 image: /assets/webDevTrends.webp
 author: Devanshu Patil
 authorTitle: Software Developer
@@ -12,7 +12,7 @@ tags: ['frontend']
 proficiency: Intermediate
 ---
 
-CSS in 2025 is almost unrecognisable from what it was five years ago. If you're still writing CSS like it's 2019, this post will change how you think about styling.
+CSS today is almost unrecognisable from what it was five years ago. If you're still writing CSS like it's 2019, this post will change how you think about styling.
 
 ## 1. Container Queries — Truly Responsive Components
 

@@ -3,7 +3,7 @@ title: PostgreSQL Tips Every Backend Developer Should Know
 description: Practical PostgreSQL techniques — window functions, indexes, EXPLAIN ANALYZE, JSON columns, and query optimisation patterns used in real production systems.
 category: Backend
 published: true
-createdAt: 2025-05-18T09:00:00.000Z
+createdAt: 2026-05-28T13:00:00.000Z
 image: /assets/google-console.webp
 author: Devanshu Patil
 authorTitle: Software Developer

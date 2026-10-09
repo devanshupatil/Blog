@@ -3,7 +3,7 @@ title: Deploy a Node.js App to AWS Lambda in 15 Minutes
 description: A step-by-step guide to deploying a serverless Node.js function on AWS Lambda with API Gateway — from zero to a live public URL.
 category: Cloud
 published: true
-createdAt: 2025-05-14T09:00:00.000Z
+createdAt: 2026-05-28T12:00:00.000Z
 image: /assets/lambda-vpc.webp
 author: Devanshu Patil
 authorTitle: Software Developer

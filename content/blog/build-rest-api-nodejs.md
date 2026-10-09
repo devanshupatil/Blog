@@ -3,7 +3,7 @@ title: Build a REST API with Node.js and Express
 description: Step-by-step guide to building a production-ready REST API using Node.js, Express, and best practices for error handling, validation, and structure.
 category: Backend
 published: true
-createdAt: 2025-05-10T09:00:00.000Z
+createdAt: 2026-05-28T11:00:00.000Z
 image: /assets/python-requests.webp
 author: Devanshu Patil
 authorTitle: Software Developer

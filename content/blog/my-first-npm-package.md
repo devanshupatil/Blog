@@ -3,7 +3,7 @@ title: How I Built and Published My First npm Package
 description: A walkthrough of creating, testing, and publishing a small utility package to npm — including TypeScript setup, semver, and the lessons I learned.
 category: Backend
 published: true
-createdAt: 2025-04-28T09:00:00.000Z
+createdAt: 2026-05-28T09:00:00.000Z
 image: /assets/node-modules-app-performance_.webp
 author: Devanshu Patil
 authorTitle: Software Developer

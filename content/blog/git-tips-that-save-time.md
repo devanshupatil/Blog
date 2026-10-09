@@ -4,7 +4,7 @@ description: Practical Git commands and workflows most developers don't know —
 category: Backend
 published: true
 featured: true
-createdAt: 2025-05-08T09:00:00.000Z
+createdAt: 2026-05-28T10:00:00.000Z
 image: /assets/git-bisect.webp
 author: Devanshu Patil
 authorTitle: Software Developer

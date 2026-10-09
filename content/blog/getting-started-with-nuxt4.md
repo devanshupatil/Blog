@@ -3,7 +3,7 @@ title: Getting Started with Nuxt 4
 description: A practical beginner's guide to setting up a Nuxt 4 project from scratch, covering the new app/ directory, SSG, and content management.
 category: Frontend
 published: true
-createdAt: 2025-05-20T09:00:00.000Z
+createdAt: 2026-05-28T14:00:00.000Z
 image: /assets/nuxt4_cover.png
 author: Devanshu Patil
 authorTitle: Software Developer
